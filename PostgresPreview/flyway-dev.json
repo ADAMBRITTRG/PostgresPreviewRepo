@@ -7,13 +7,13 @@
     "public"
   ],
   "development": {
-  "generateUndoScripts":"True",
     "scriptsFolder": "./schema-model"
   },
   "deployment": {
-    "flywayConfFiles": [
+      "flywayConfFiles": [
       "./flyway.conf"
-    ]
+    ],
+    "generateUndoScripts":true
   },
   "capabilities": {
     "comparisonEngineType": "RgCompare"
