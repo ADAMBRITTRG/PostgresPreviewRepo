@@ -56,12 +56,12 @@
         },
         {
           "objectType": "column",
-          "fullName": "\"phone\"",
+          "fullName": "\"website\"",
           "type": "varchar"
         },
         {
           "objectType": "column",
-          "fullName": "\"website\"",
+          "fullName": "\"phone\"",
           "type": "varchar"
         },
         {

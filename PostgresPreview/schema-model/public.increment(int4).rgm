@@ -3,7 +3,7 @@
     {
       "objectType": "function",
       "fullName": "\"public\".\"increment(int4)\"",
-      "text": "\n        BEGIN\n                RETURN i + 1;\n        END;\n",
+      "text": "\r\n        BEGIN\r\n                RETURN i + 1;\r\n        END;\r\n",
       "returnType": "int4",
       "arguments": [
         {
