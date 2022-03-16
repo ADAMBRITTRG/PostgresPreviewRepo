@@ -68,6 +68,11 @@
           "objectType": "column",
           "fullName": "\"fax\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"test1\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
