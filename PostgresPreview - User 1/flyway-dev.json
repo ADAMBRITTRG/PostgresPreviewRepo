@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "name": "PostgresPreview - User 1",
-  "id": "d845cd83-29fc-4f40-b866-38619f0a604d",
+  "id": "8f29812e-d48f-48dd-bfae-dcb341e297b1",
   "databaseType": "PostgreSql",
   "schemas": [
     "public"
