@@ -78,6 +78,11 @@
           "objectType": "column",
           "fullName": "\"checking\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"dev5\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
