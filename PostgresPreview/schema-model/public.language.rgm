@@ -18,6 +18,11 @@
           "objectType": "column",
           "fullName": "\"last_update\"",
           "type": "timestamptz"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"dev1\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
