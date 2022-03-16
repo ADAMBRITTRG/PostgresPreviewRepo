@@ -61,11 +61,6 @@
         },
         {
           "objectType": "column",
-          "fullName": "\"fax\"",
-          "type": "varchar"
-        },
-        {
-          "objectType": "column",
           "fullName": "\"website\"",
           "type": "varchar"
         }
