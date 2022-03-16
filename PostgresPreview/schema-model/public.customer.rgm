@@ -88,6 +88,11 @@
           "objectType": "column",
           "fullName": "\"url\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"address\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
