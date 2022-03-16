@@ -73,6 +73,11 @@
           "objectType": "column",
           "fullName": "\"test1\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"checking\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
