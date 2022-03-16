@@ -83,6 +83,11 @@
           "objectType": "column",
           "fullName": "\"dev5\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"url\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
