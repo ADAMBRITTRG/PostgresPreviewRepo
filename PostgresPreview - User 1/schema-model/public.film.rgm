@@ -1,0 +1,125 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"film\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"film_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"title\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"description\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"release_year\"",
+          "type": "\"public\".\"year\"",
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "domain": "\"public\".\"year\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"language_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"original_language_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"rental_duration\"",
+          "type": "int2"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"rental_rate\"",
+          "type": "numeric"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"length\"",
+          "type": "int2"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"replacement_cost\"",
+          "type": "numeric"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"rating\"",
+          "type": "\"public\".\"mpaa_rating\"",
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "enum": "\"public\".\"mpaa_rating\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"special_features\"",
+          "type": "_text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"fulltext\"",
+          "type": "tsvector"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"film_pkey\"",
+          "columns": [
+            "\"film_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"film\""
+                },
+                {
+                  "column": "\"film_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

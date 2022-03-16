@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"city\".\"city_country_id_fkey\"",
+      "columns": [
+        "\"country_id\""
+      ],
+      "referencedTable": "\"public\".\"country\"",
+      "referencedColumns": [
+        "\"country_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"country\""
+            },
+            {
+              "column": "\"country_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"city\""
+            },
+            {
+              "column": "\"country_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

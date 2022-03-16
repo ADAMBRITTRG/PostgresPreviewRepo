@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"rental\".\"rental_staff_id_fkey\"",
+      "columns": [
+        "\"staff_id\""
+      ],
+      "referencedTable": "\"public\".\"staff\"",
+      "referencedColumns": [
+        "\"staff_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"staff\""
+            },
+            {
+              "column": "\"staff_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"rental\""
+            },
+            {
+              "column": "\"staff_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

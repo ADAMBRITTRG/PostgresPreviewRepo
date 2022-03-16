@@ -1,0 +1,40 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"payment_p2020_05\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"payment_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"customer_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"staff_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"rental_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"amount\"",
+          "type": "numeric"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"payment_date\"",
+          "type": "timestamptz"
+        }
+      ]
+    }
+  ]
+}

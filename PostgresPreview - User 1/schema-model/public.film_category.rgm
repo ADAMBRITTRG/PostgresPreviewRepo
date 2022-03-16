@@ -1,0 +1,61 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"film_category\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"film_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"category_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"film_category_pkey\"",
+          "columns": [
+            "\"film_id\"",
+            "\"category_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"film_category\""
+                },
+                {
+                  "column": "\"film_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            },
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"film_category\""
+                },
+                {
+                  "column": "\"category_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

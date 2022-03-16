@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"customer\".\"customer_store_id_fkey\"",
+      "columns": [
+        "\"store_id\""
+      ],
+      "referencedTable": "\"public\".\"store\"",
+      "referencedColumns": [
+        "\"store_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"store\""
+            },
+            {
+              "column": "\"store_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"customer\""
+            },
+            {
+              "column": "\"store_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

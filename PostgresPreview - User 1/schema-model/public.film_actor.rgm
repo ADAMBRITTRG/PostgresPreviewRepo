@@ -1,0 +1,61 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"film_actor\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"actor_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"film_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"film_actor_pkey\"",
+          "columns": [
+            "\"actor_id\"",
+            "\"film_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"film_actor\""
+                },
+                {
+                  "column": "\"actor_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            },
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"film_actor\""
+                },
+                {
+                  "column": "\"film_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"city\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"city_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"city\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"country_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"city_pkey\"",
+          "columns": [
+            "\"city_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"city\""
+                },
+                {
+                  "column": "\"city_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

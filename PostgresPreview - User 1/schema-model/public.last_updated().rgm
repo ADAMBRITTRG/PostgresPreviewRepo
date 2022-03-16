@@ -1,0 +1,12 @@
+{
+  "objects": [
+    {
+      "objectType": "function",
+      "fullName": "\"public\".\"last_updated()\"",
+      "text": "\r\nBEGIN\r\n    NEW.last_update = CURRENT_TIMESTAMP;\r\n    RETURN NEW;\r\nEND ",
+      "returnType": "trigger",
+      "arguments": [],
+      "language": "plpgsql"
+    }
+  ]
+}

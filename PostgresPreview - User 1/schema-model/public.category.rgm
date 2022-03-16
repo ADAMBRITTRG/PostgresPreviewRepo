@@ -1,0 +1,48 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"category\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"category_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"category_pkey\"",
+          "columns": [
+            "\"category_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"category\""
+                },
+                {
+                  "column": "\"category_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "objects": [
+    {
+      "objectType": "function",
+      "fullName": "\"public\".\"inventory_held_by_customer(int4)\"",
+      "text": "\r\nDECLARE\r\n    v_customer_id INTEGER;\r\nBEGIN\r\n\r\n  SELECT customer_id INTO v_customer_id\r\n  FROM rental\r\n  WHERE return_date IS NULL\r\n  AND inventory_id = p_inventory_id;\r\n\r\n  RETURN v_customer_id;\r\nEND ",
+      "returnType": "int4",
+      "arguments": [
+        {
+          "name": "p_inventory_id",
+          "type": "int4",
+          "mode": "IN"
+        }
+      ],
+      "language": "plpgsql"
+    }
+  ]
+}

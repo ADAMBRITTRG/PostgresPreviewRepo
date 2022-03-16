@@ -1,0 +1,88 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"staff\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"staff_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"first_name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"address_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"email\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"store_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"active\"",
+          "type": "bool"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"username\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"password\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"picture\"",
+          "type": "bytea"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"staff_pkey\"",
+          "columns": [
+            "\"staff_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"staff\""
+                },
+                {
+                  "column": "\"staff_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

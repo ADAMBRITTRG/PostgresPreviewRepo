@@ -1,0 +1,73 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"address\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"address_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"address\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"address2\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"district\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"city_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"postal_code\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"phone\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"address_pkey\"",
+          "columns": [
+            "\"address_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"address\""
+                },
+                {
+                  "column": "\"address_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

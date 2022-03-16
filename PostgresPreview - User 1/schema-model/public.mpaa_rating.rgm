@@ -1,0 +1,15 @@
+{
+  "objects": [
+    {
+      "objectType": "enum",
+      "fullName": "\"public\".\"mpaa_rating\"",
+      "values": [
+        "G",
+        "PG",
+        "PG-13",
+        "R",
+        "NC-17"
+      ]
+    }
+  ]
+}

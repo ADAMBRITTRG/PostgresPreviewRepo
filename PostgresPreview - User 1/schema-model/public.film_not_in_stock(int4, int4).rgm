@@ -1,0 +1,28 @@
+{
+  "objects": [
+    {
+      "objectType": "function",
+      "fullName": "\"public\".\"film_not_in_stock(int4, int4)\"",
+      "text": "\r\n    SELECT inventory_id\r\n    FROM inventory\r\n    WHERE film_id = $1\r\n    AND store_id = $2\r\n    AND NOT inventory_in_stock(inventory_id);\r\n",
+      "returnType": "int4",
+      "arguments": [
+        {
+          "name": "p_film_id",
+          "type": "int4",
+          "mode": "IN"
+        },
+        {
+          "name": "p_store_id",
+          "type": "int4",
+          "mode": "IN"
+        },
+        {
+          "name": "p_film_count",
+          "type": "int4",
+          "mode": "OUT"
+        }
+      ],
+      "language": "sql"
+    }
+  ]
+}

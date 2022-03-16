@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"inventory\".\"inventory_film_id_fkey\"",
+      "columns": [
+        "\"film_id\""
+      ],
+      "referencedTable": "\"public\".\"film\"",
+      "referencedColumns": [
+        "\"film_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"film\""
+            },
+            {
+              "column": "\"film_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"inventory\""
+            },
+            {
+              "column": "\"film_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

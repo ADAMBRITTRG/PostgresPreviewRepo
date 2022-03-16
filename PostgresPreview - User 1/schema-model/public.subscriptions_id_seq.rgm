@@ -1,0 +1,30 @@
+{
+  "objects": [
+    {
+      "objectType": "sequence",
+      "fullName": "\"public\".\"subscriptions_id_seq\"",
+      "type": "int4",
+      "increment": "1",
+      "minValue": "1",
+      "maxValue": "2147483647",
+      "start": "1",
+      "cache": "1",
+      "cycle": "NO CYCLE",
+      "ownedBy": "\"public\".\"subscriptions\".\"id\"",
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"subscriptions\""
+            },
+            {
+              "column": "\"id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

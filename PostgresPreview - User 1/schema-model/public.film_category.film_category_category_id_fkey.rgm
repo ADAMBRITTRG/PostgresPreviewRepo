@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"film_category\".\"film_category_category_id_fkey\"",
+      "columns": [
+        "\"category_id\""
+      ],
+      "referencedTable": "\"public\".\"category\"",
+      "referencedColumns": [
+        "\"category_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"category\""
+            },
+            {
+              "column": "\"category_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"film_category\""
+            },
+            {
+              "column": "\"category_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

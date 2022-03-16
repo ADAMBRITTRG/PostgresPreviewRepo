@@ -1,0 +1,43 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"subscriptions\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"subscription_name\"",
+          "type": "varchar"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"subscriptions_pkey\"",
+          "columns": [
+            "\"id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"subscriptions\""
+                },
+                {
+                  "column": "\"id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

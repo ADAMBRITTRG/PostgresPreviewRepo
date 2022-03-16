@@ -1,0 +1,23 @@
+{
+  "objects": [
+    {
+      "objectType": "function",
+      "fullName": "\"public\".\"_group_concat(text, text)\"",
+      "text": "\r\nSELECT CASE\r\n  WHEN $2 IS NULL THEN $1\r\n  WHEN $1 IS NULL THEN $2\r\n  ELSE $1 || ', ' || $2\r\nEND\r\n",
+      "returnType": "text",
+      "arguments": [
+        {
+          "name": "",
+          "type": "text",
+          "mode": "IN"
+        },
+        {
+          "name": "",
+          "type": "text",
+          "mode": "IN"
+        }
+      ],
+      "language": "sql"
+    }
+  ]
+}

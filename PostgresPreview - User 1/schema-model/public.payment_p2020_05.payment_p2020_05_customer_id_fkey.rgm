@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"payment_p2020_05\".\"payment_p2020_05_customer_id_fkey\"",
+      "columns": [
+        "\"customer_id\""
+      ],
+      "referencedTable": "\"public\".\"customer\"",
+      "referencedColumns": [
+        "\"customer_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"customer\""
+            },
+            {
+              "column": "\"customer_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"payment_p2020_05\""
+            },
+            {
+              "column": "\"customer_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

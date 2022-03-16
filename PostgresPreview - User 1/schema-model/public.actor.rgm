@@ -1,0 +1,53 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"actor\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"actor_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"first_name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"actor_pkey\"",
+          "columns": [
+            "\"actor_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"actor\""
+                },
+                {
+                  "column": "\"actor_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

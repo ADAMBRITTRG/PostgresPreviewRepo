@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"film\".\"film_language_id_fkey\"",
+      "columns": [
+        "\"language_id\""
+      ],
+      "referencedTable": "\"public\".\"language\"",
+      "referencedColumns": [
+        "\"language_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"language\""
+            },
+            {
+              "column": "\"language_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"film\""
+            },
+            {
+              "column": "\"language_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

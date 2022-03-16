@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"store\".\"store_address_id_fkey\"",
+      "columns": [
+        "\"address_id\""
+      ],
+      "referencedTable": "\"public\".\"address\"",
+      "referencedColumns": [
+        "\"address_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"address\""
+            },
+            {
+              "column": "\"address_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"store\""
+            },
+            {
+              "column": "\"address_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

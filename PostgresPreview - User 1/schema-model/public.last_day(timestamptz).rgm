@@ -1,0 +1,18 @@
+{
+  "objects": [
+    {
+      "objectType": "function",
+      "fullName": "\"public\".\"last_day(timestamptz)\"",
+      "text": "\r\n  SELECT CASE\r\n    WHEN EXTRACT(MONTH FROM $1) = 12 THEN\r\n      (((EXTRACT(YEAR FROM $1) + 1) operator(pg_catalog.||) '-01-01')::date - INTERVAL '1 day')::date\r\n    ELSE\r\n      ((EXTRACT(YEAR FROM $1) operator(pg_catalog.||) '-' operator(pg_catalog.||) (EXTRACT(MONTH FROM $1) + 1) operator(pg_catalog.||) '-01')::date - INTERVAL '1 day')::date\r\n    END\r\n",
+      "returnType": "date",
+      "arguments": [
+        {
+          "name": "",
+          "type": "timestamptz",
+          "mode": "IN"
+        }
+      ],
+      "language": "sql"
+    }
+  ]
+}

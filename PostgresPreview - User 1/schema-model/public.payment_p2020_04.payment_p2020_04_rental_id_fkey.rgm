@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"payment_p2020_04\".\"payment_p2020_04_rental_id_fkey\"",
+      "columns": [
+        "\"rental_id\""
+      ],
+      "referencedTable": "\"public\".\"rental\"",
+      "referencedColumns": [
+        "\"rental_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"rental\""
+            },
+            {
+              "column": "\"rental_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"payment_p2020_04\""
+            },
+            {
+              "column": "\"rental_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

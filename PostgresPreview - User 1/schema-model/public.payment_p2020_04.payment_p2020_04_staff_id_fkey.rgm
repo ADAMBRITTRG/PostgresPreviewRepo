@@ -1,0 +1,41 @@
+{
+  "objects": [
+    {
+      "objectType": "foreignKey",
+      "fullName": "\"public\".\"payment_p2020_04\".\"payment_p2020_04_staff_id_fkey\"",
+      "columns": [
+        "\"staff_id\""
+      ],
+      "referencedTable": "\"public\".\"staff\"",
+      "referencedColumns": [
+        "\"staff_id\""
+      ],
+      "dependencies": [
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"staff\""
+            },
+            {
+              "column": "\"staff_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        },
+        {
+          "dependencyType": "Requires",
+          "consumes": [
+            {
+              "table": "\"public\".\"payment_p2020_04\""
+            },
+            {
+              "column": "\"staff_id\""
+            }
+          ],
+          "propertiesRequiringRebuild": []
+        }
+      ]
+    }
+  ]
+}

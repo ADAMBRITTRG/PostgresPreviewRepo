@@ -1,0 +1,98 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"customer\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"customer_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"store_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"first_name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"email\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"address_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"activebool\"",
+          "type": "bool"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"create_date\"",
+          "type": "date"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_update\"",
+          "type": "timestamptz"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"active\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"phone\"",
+          "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"fax\"",
+          "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"website\"",
+          "type": "varchar"
+        }
+      ],
+      "primaryKeys": [
+        {
+          "objectType": "primaryKey",
+          "fullName": "\"customer_pkey\"",
+          "columns": [
+            "\"customer_id\""
+          ],
+          "dependencies": [
+            {
+              "dependencyType": "Requires",
+              "consumes": [
+                {
+                  "table": "\"public\".\"customer\""
+                },
+                {
+                  "column": "\"customer_id\""
+                }
+              ],
+              "propertiesRequiringRebuild": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
