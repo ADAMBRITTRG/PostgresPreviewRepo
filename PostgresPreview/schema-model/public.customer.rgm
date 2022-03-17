@@ -93,6 +93,11 @@
           "objectType": "column",
           "fullName": "\"address\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"alternive_name\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [

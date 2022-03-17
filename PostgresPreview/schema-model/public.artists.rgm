@@ -1,0 +1,20 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"artists\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"title\"",
+          "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"year\"",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}
