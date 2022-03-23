@@ -98,6 +98,11 @@
           "objectType": "column",
           "fullName": "\"alternive_name\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"test3\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
