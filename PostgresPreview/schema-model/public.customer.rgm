@@ -103,6 +103,11 @@
           "objectType": "column",
           "fullName": "\"test3\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"georgiapacificcolumn\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
