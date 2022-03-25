@@ -108,6 +108,11 @@
           "objectType": "column",
           "fullName": "\"georgiapacificcolumn\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"amwincolumn\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
