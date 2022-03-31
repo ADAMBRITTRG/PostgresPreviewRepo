@@ -27,3 +27,4 @@ steps:
     inputs:
       PathtoPublish: ADAMBRITTRG/PostgresPreviewRepo
       ArtifactName: PostgrePreviewRepo-Build
+
