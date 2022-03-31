@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: Deault
+   vmImage: ubuntu-latest
 
 steps:
   - task: CmdLine@2
