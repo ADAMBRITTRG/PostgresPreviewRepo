@@ -13,6 +13,11 @@
           "objectType": "column",
           "fullName": "\"year\"",
           "type": "date"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"tester\"",
+          "type": "varchar"
         }
       ]
     }
