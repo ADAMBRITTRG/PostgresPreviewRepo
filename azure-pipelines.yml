@@ -14,13 +14,13 @@ steps:
     displayName: Validate Migrate Scripts
     inputs:
       script: 'flyway migrate info -url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila -user=spawn_admin_YOsj -password=Xg6T6EkL7AdFBW5T'
-      workingDirectory: ADAMBRITTRG/PostgresPreviewRepo
+      workingDirectory: PostgresPreview
       failOnStderr: true
   - task: CmdLine@2
     displayName: Validate Undo Scripts
     inputs:
       script: 'flyway undo info -url=url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila -user=spawn_admin_YOsj -password=Xg6T6EkL7AdFBW5T'
-      workingDirectory: ADAMBRITTRG/PostgresPreviewRepo
+      workingDirectory: PostgresPreview
       failOnStderr: true
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: PostgrePreviewRepo-Build'
