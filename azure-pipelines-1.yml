@@ -18,5 +18,5 @@ steps:
 - task: Bash@3
   inputs:
     targettype: 'inline'
-    script: docker run flyway/flyway migrate -schemas=public -configFiles=./flyway.conf -url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila -user=spawn_admin_YOsj
+    script: docker run flyway/flyway migrate -schemas=public -url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila -user=spawn_admin_YOsj
   displayName: 'Run Flyway'
