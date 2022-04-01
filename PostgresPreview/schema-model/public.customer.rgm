@@ -113,6 +113,11 @@
           "objectType": "column",
           "fullName": "\"amwincolumn\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"fiftytwocolumn\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
