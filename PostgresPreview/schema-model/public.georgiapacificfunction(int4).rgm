@@ -2,7 +2,7 @@
   "objects": [
     {
       "objectType": "function",
-      "fullName": "\"public\".\"amwinfunction(int4)\"",
+      "fullName": "\"public\".\"georgiapacificfunction(int4)\"",
       "text": "\r\n        BEGIN\r\n                RETURN i + 1;\r\n        END;\r\n",
       "returnType": "int4",
       "arguments": [
