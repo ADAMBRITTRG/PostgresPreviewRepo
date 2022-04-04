@@ -24,7 +24,6 @@ variables:
   value: $(Build.Repository.LocalPath)/PostgresPreviewRepo/PostgresPreview/Migrations
 
 stages:
-  - 
 - stage: Deploy
   displayName: Database Deployment
   jobs:
