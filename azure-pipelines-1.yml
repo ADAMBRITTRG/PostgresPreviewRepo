@@ -29,7 +29,7 @@ steps:
 #    - task: CmdLine@2
 #      displayName: Run all migrations on a clean database
 #      inputs:
-#        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
+#        script: [removed double quotes]docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
 #        -schemas=dbo 
 #        -user=$(STACKOVERFLOW2010_TEMP_USER) -password=$(STACKOVERFLOW2010_TEMP_PASSWORD) 
 #        -url='$(STACKOVERFLOW2010_TEMP_URL)'
