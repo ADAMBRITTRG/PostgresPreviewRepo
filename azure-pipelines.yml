@@ -23,18 +23,28 @@ variables:
 - name: FLYWAY_LOCATIONS
   value: $(Build.Repository.LocalPath)/PostgresPreviewRepo/PostgresPreview/Migrations
 
+
+stages:
+- stage: "CI"
+  displayName: "Database CI"
+  jobs:
+  - job: Static_Analysis
+    displayName: SQL static analysis (uses SQLFluff)
+    steps:
+    - task: PublishPipelineArtifact@1
+      displayName: Publish Build Artifacts
+      inputs:
+        targetPath: '$(Build.Repository.LocalPath)/sqlserver/StackOverflow2010/migrations'
+        artifact: Flyway-migrations
+        publishLocation: 'pipeline'
+
+
 stages:
 - stage: Deploy
   displayName: Database Deployment
   jobs:
   - job: DeployToProd
     steps:
-     - task: PublishPipelineArtifact@1
-      displayName: Publish Build Artifacts
-      inputs:
-        targetPath: '$(Build.Repository.LocalPath)/PostgresPreviewRepo/PostgresPreview/Migrations'
-        artifact: Flyway-migrations
-        publishLocation: 'pipeline'
 # Ideally we should have a task that compares Acceptance with Prod to ensure they are at the same version
     - download: current
       artifact: Flyway-migrations
