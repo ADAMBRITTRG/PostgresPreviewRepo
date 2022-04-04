@@ -4,13 +4,6 @@
 # https://aka.ms/yaml
 
 
-resources:
-  repositories:
-  # template repository
-  - repository: PostgresPreviewRepo
-    type: git
-    name: main
-
 variables:
 - group: postgres.Database
 - name: DBNAME
