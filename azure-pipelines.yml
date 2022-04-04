@@ -15,7 +15,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-- group: REDGATE
+- group: POSTGRES_VARIABLE_GROUP
 # Where the flyway.conf file resides for your project
 - name: FLYWAY_CONFIG_FILES
   value: $(Build.Repository.LocalPath)/PostgresPreviewRepo/PostgresPreview/flyway.conf
