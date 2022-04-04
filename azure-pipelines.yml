@@ -40,4 +40,3 @@ stages:
         -outOfOrder=true -schemas=dbo 
         -user=spawn_admin_YOsj -password=Xg6T6EkL7AdFBW5T 
         -url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila
-        
