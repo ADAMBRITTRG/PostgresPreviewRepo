@@ -12,7 +12,7 @@ variables:
 - name: flywayVmImage
   value: 'ubuntu-16.04'  
 - name: flywayContainerImage
-  value: 'kulmam92/flyway-azure:6.2.3'  
+  value: 'flyway/flyway-azure'  
 trigger:
 - master
 
@@ -22,7 +22,7 @@ stages:
   - name: DBNAME_POSTFIX
     value: _DEV
   jobs:
-  - template: templates/snowflakeFlywayBuild.yml
+  - template: templates/postgresFlywayBuild.yml
     parameters:
       jobName: 'BuildDatabase'
       databaseName: $(DBNAME)
@@ -36,7 +36,7 @@ stages:
   - name: DBNAME_POSTFIX
     value: _DEV
   jobs:
-  - template: templates/snowflakeFlywayDeploy.yml
+  - template: templates/postgresFlywayDeploy.yml
     parameters:
       jobName: DEV
       databaseName: $(DBNAME)
@@ -51,7 +51,7 @@ stages:
   - name: DBNAME_POSTFIX
     value: _QA
   jobs:
-  - template: templates/snowflakeFlywayDeploy.yml
+  - template: templates/postgresFlywayDeploy.yml
     parameters:
       jobName: QA
       databaseName: $(DBNAME)
@@ -66,7 +66,7 @@ stages:
   - name: DBNAME_POSTFIX
     value: '' # Empty string for PROD
   jobs:
-  - template: templates/snowflakeFlywayDeploy.yml
+  - template: templates/postgresFlywayDeploy.yml
     parameters:
       jobName: PROD
       databaseName: $(DBNAME)
