@@ -27,8 +27,8 @@ variables:
 - name: FLYWAY_REPORTS
   value: $(Build.Repository.LocalPath)/reports
 
-
-stage: 'Deploy'
+stages:
+- stage: 'Deploy'
   displayName: Pre-production Deployment
   jobs:
     steps:
