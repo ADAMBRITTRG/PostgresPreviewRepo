@@ -6,7 +6,7 @@
 resources:
   repositories:
   # template repository
-  - repository: PostgresPreviewRepo
+  - repository: ADAMBRITTRG/PostgresPreviewRepo
     type: git
     name: PostgresPreviewRepo
 
