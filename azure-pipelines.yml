@@ -3,6 +3,13 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+resources:
+  repositories:
+  # template repository
+  - repository: PostgresPreviewRepo
+    type: git
+    name: PostgresPreviewRepo
+
 variables:
 - group: postgres.Database
 - name: DBNAME
