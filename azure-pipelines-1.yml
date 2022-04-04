@@ -13,23 +13,34 @@ trigger:
  
 pool:
   vmImage: 'ubuntu-latest'
- 
-steps:
-- task: DockerInstaller@0
-  inputs:
-    dockerVersion: '17.09.0-ce'
-  displayName: 'Install Docker'
- 
-- task: CmdLine@2
-  displayName: Migrate scripts to the pre-production environment
-  inputs:
-    script: "docker run -v flyway/flyway migrate -schemas=public -url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila -user=spawn_admin_YOsj -password=Xg6T6EkL7AdFBW5T
 
-#    - task: CmdLine@2
-#      displayName: Run all migrations on a clean database
-#      inputs:
-#        script: [removed double quotes]docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
-#        -schemas=dbo 
-#        -user=$(STACKOVERFLOW2010_TEMP_USER) -password=$(STACKOVERFLOW2010_TEMP_PASSWORD) 
-#        -url='$(STACKOVERFLOW2010_TEMP_URL)'
-#        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+variables:
+- group: REDGATE
+# Where the flyway.conf file resides for your project
+- name: FLYWAY_CONFIG_FILES
+  value: $(Build.Repository.LocalPath)/PostgresPreviewRepo/PostgresPreview/flyway.conf
+# Where where your flyway migrations reside in your project
+- name: FLYWAY_LOCATIONS
+  value: $(Build.Repository.LocalPath)/PostgresPreviewRepo/PostgresPreview/Migrations
+
+stages:
+  - 
+- stage: Deploy
+  displayName: Database Deployment
+  jobs:
+  - job: DeployToProd
+    steps:
+# Ideally we should have a task that compares Acceptance with Prod to ensure they are at the same version
+    - download: current
+      artifact: Flyway-migrations
+    - task: CmdLine@2
+      displayName: ls-pipeline-workspace-folder
+      inputs:
+        script: "ls $(Pipeline.Workspace)"
+    - task: CmdLine@2
+      displayName: Flyway info (pre-deployment)
+      inputs:
+        script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway info 
+        -schemas=dbo 
+        -user=spawn_admin_YOsj -password=Xg6T6EkL7AdFBW5T 
+        -url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila 
