@@ -6,9 +6,9 @@
 resources:
   repositories:
   # template repository
-  - repository: PostgresPreview
+  - repository: PostgresPreviewRepo
     type: git
-    name: PostgresPreview
+    name: PostgresPreviewRepo
 
 variables:
 - group: postgres.Database
