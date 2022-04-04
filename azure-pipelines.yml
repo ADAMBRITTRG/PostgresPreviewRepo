@@ -29,6 +29,12 @@ stages:
   jobs:
   - job: DeployToProd
     steps:
+       - task: PublishPipelineArtifact@1
+      displayName: Publish Build Artifacts
+      inputs:
+        targetPath: '$(Build.Repository.LocalPath)/PostgresPreviewRepo/PostgresPreview/Migrations'
+        artifact: Flyway-migrations
+        publishLocation: 'pipeline'
 # Ideally we should have a task that compares Acceptance with Prod to ensure they are at the same version
     - download: current
       artifact: Flyway-migrations
