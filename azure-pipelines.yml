@@ -38,8 +38,6 @@ stages:
         artifact: Flyway-migrations
         publishLocation: 'pipeline'
 
-
-stages:
 - stage: Deploy
   displayName: Database Deployment
   jobs:
