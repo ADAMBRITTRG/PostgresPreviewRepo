@@ -14,7 +14,7 @@ variables:
 - name: flywayContainerImage
   value: 'flyway/flyway-azure'  
 trigger:
-- master
+- main
 
 stages:
 - stage: Build
