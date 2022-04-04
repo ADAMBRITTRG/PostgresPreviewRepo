@@ -39,4 +39,4 @@ stages:
         script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway migrate 
         -outOfOrder=true -schemas=dbo 
         -user=spawn_admin_YOsj -password=Xg6T6EkL7AdFBW5T 
-        -url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila
+        -url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila 
