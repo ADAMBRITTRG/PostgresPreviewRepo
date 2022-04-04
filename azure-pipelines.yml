@@ -17,12 +17,6 @@ steps:
       workingDirectory: PostgresPreview
       failOnStderr: true
       path: PostgresPreview
-  - task: CmdLine@2
-    displayName: Validate Undo Scripts
-    inputs:
-      script: 'flyway undo info -url=url=jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30330/pagila -user=spawn_admin_YOsj -password=Xg6T6EkL7AdFBW5T'
-      workingDirectory: PostgresPreview
-      failOnStderr: true
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: PostgrePreviewRepo-Build'
     inputs:
