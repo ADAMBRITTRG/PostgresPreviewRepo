@@ -6,9 +6,9 @@
 resources:
   repositories:
   # template repository
-  - repository: PostgresPreviewRepo
+  - repository: PipelineCommon
     type: git
-    name: PostgresPreviewRepo
+    name: PipelineCommon
 
 variables:
 - group: postgres.Database
