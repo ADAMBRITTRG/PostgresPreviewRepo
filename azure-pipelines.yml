@@ -34,7 +34,7 @@ stages:
     - task: PublishPipelineArtifact@1
       displayName: Publish Build Artifacts
       inputs:
-        targetPath: '$(Build.Repository.LocalPath)/sqlserver/StackOverflow2010/migrations'
+        targetPath: '$(Build.Repository.LocalPath)/PostgresPreviewRepo/PostgresPreview/migrations'
         artifact: Flyway-migrations
         publishLocation: 'pipeline'
 
