@@ -9,7 +9,7 @@ trigger:
     - main
   paths:
     include: 
-    - PostgrespreviewRepo
+    - Postgrespreview
  
 pool:
   vmImage: 'ubuntu-latest'
