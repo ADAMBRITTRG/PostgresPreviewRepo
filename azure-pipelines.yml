@@ -18,10 +18,10 @@ variables:
 - group: POSTGRES_VARIABLE_GROUP
 # Where the flyway.conf file resides for your project
 - name: FLYWAY_CONFIG_FILES
-  value: $(Build.Repository.LocalPath)PostgresPreview/flyway.conf
+  value: $(Build.Repository.LocalPath)/PostgresPreview/flyway.conf
 # Where where your flyway migrations reside in your project
 - name: FLYWAY_LOCATIONS
-  value: $(Build.Repository.LocalPath)PostgresPreview/Migrations
+  value: $(Build.Repository.LocalPath)/PostgresPreview/Migrations
 
 
 stages:
@@ -34,7 +34,7 @@ stages:
     - task: PublishPipelineArtifact@1
       displayName: Publish Build Artifacts
       inputs:
-        targetPath: '$(Build.Repository.LocalPath)PostgresPreview/migrations'
+        targetPath: '$(Build.Repository.LocalPath)/PostgresPreview/migrations'
         artifact: Flyway-migrations
         publishLocation: 'pipeline'
 
