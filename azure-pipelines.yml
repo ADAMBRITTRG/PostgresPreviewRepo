@@ -54,7 +54,7 @@ stages:
       displayName: Flyway info (pre-deployment)
       inputs:
         script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway migrate
-        -outOfOrder=true -schemas=dbo 
+        -outOfOrder=true -schemas=public
         -user=$(QA_USER) -password=$(QA_PASSWORD) 
         -url='$(QA_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)"
