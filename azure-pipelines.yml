@@ -9,7 +9,7 @@ trigger:
     - master
   paths:
     include: 
-    - ADAMBRITTRG/PostgresPreviewRepo
+    - PostgresPreviewRepo/Postgrespreview
  
 pool:
   vmImage: 'ubuntu-latest'
