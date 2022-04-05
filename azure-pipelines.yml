@@ -5,8 +5,8 @@
 
 trigger: 
   branches:
-  include:
-  - main
+    include:
+    - main
   paths:
     include: 
     - PostgrespreviewRepo
