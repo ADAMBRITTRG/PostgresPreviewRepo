@@ -46,7 +46,6 @@ stages:
       displayName: SQL static analysis (uses SQLFluff)
       # Should static analysis be part of the pre-release stage and only apply to pending scripts? If so, easier to run within flyway
       # https://stackoverflow.com/questions/70787432/permission-denied-error-in-github-actions
-    steps:
     - task: PublishPipelineArtifact@1
       displayName: Publish Build Artifacts
       inputs:
