@@ -29,8 +29,23 @@ stages:
 - stage: "CI"
   displayName: "Database CI"
   jobs:
-  - job: Static_Analysis
-    displayName: SQL static analysis (uses SQLFluff)
+  - job: Database_Build_and_Test
+    displayName: Build DB, run unit tests
+    steps:
+    - task: CmdLine@2
+      displayName: Run all migrations on a clean database
+      inputs:
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
+        -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
+        -url='$(EMPTY_URL)'
+        -licenseKey=$(FLYWAY_LICENSE_KEY)
+        -errorOverrides=S0001:0:I-
+        > $(Build.ArtifactStagingDirectory)/Build_results.txt"
+    - task: CmdLine@2
+      enabled: false
+      displayName: SQL static analysis (uses SQLFluff)
+      # Should static analysis be part of the pre-release stage and only apply to pending scripts? If so, easier to run within flyway
+      # https://stackoverflow.com/questions/70787432/permission-denied-error-in-github-actions
     steps:
     - task: PublishPipelineArtifact@1
       displayName: Publish Build Artifacts
