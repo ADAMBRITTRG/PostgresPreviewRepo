@@ -91,8 +91,7 @@ stages:
         -outOfOrder=true -schemas=public
         -user=$(QA_USER) -password=$(QA_PASSWORD) 
         -url='$(QA_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)
-
+        -licenseKey=$(FLYWAY_LICENSE_KEY)"
     - task: CmdLine@2
       displayName: Flyway migrate
       inputs:
@@ -101,6 +100,7 @@ stages:
         -user=$(QA_USER) -password=$(QA_PASSWORD) 
         -url='$(QA_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)
+        -errorOverrides=S0001:0:I-"
     - task: CmdLine@2
       displayName: Flyway info (post-deployment)
       inputs:
@@ -108,7 +108,7 @@ stages:
         -outOfOrder=true -schemas=public
         -user=$(QA_USER) -password=$(QA_PASSWORD) 
         -url='$(QA_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)
+        -licenseKey=$(FLYWAY_LICENSE_KEY)"
 
 ##    - task: CmdLine@2
 ##      displayName: Flyway info (pre-deployment)
