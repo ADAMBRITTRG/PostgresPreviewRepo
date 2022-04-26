@@ -35,7 +35,8 @@ stages:
     - task: CmdLine@2
       displayName: Run all migrations on a clean database
       inputs:
-        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql/flyway clean migrate 
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
+        -outOfOrder=true -schemas=public
         -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
         -url='$(EMPTY_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)
@@ -44,7 +45,8 @@ stages:
     - task: CmdLine@2
       displayName: Flyway info (post build)
       inputs:
-        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql/flyway info 
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info 
+        -outOfOrder=true -schemas=public
         -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
         -url='$(EMPTY_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)"
@@ -53,6 +55,7 @@ stages:
       displayName: Placeholder for unit testing
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway check -unitTest
+        -outOfOrder=true -schemas=public
         -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
         -url='$(EMPTY_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)
