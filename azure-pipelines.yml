@@ -42,6 +42,22 @@ stages:
         -errorOverrides=S0001:0:I-
         > $(Build.ArtifactStagingDirectory)/Build_results.txt"
     - task: CmdLine@2
+      displayName: Flyway info (post build)
+      inputs:
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info 
+        -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
+        -url='$(EMPTY_URL)'
+        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+    - task: CmdLine@2
+      enabled: false
+      displayName: Placeholder for unit testing
+      inputs:
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway check -unitTest
+        -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
+        -url='$(EMPTY_URL)'
+        -licenseKey=$(FLYWAY_LICENSE_KEY)
+        -check.outputLocation=$(Build.ArtifactStagingDirectory)"
+    - task: CmdLine@2
       enabled: false
       displayName: SQL static analysis (uses SQLFluff)
       # Should static analysis be part of the pre-release stage and only apply to pending scripts? If so, easier to run within flyway
