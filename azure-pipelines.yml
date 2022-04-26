@@ -22,7 +22,7 @@ variables:
   value: $(Build.Repository.LocalPath)/PostgresPreview/flyway.conf
 # Where where your flyway migrations reside in your project
 - name: FLYWAY_LOCATIONS
-  value: $(Build.Repository.LocalPath) /PostgresPreviewRepo/PostgresPreview/Migrations
+  value: $(Build.Repository.LocalPath) PostgresPreviewRepo/PostgresPreview/Migrations
 
 
 stages:
