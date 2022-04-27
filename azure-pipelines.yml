@@ -65,12 +65,7 @@ stages:
       displayName: SQL static analysis (uses SQLFluff)
       # Should static analysis be part of the pre-release stage and only apply to pending scripts? If so, easier to run within flyway
       # https://stackoverflow.com/questions/70787432/permission-denied-error-in-github-actions
-    - task: PublishPipelineArtifact@1
-      displayName: Publish Build Artifacts
-      inputs:
-        targetPath: '$(Build.Repository.LocalPath)/PostgresPreview/migrations'
-        artifact: Flyway-migrations
-        publishLocation: 'pipeline'
+
     - task: PublishPipelineArtifact@1
       displayName: Publish CI Report Artifacts
       condition: succeededOrFailed()
@@ -78,9 +73,30 @@ stages:
         targetPath: '$(Build.ArtifactStagingDirectory)'
         artifact: 1.Flyway-CI-reports
         publishLocation: 'pipeline'
-
-
-
+#    - task: PublishPipelineArtifact@1
+#      displayName: Publish Build Artifacts
+#      inputs:
+#        targetPath: '$(Build.Repository.LocalPath)/PostgresPreview/migrations'
+#        artifact: Flyway-migrations
+#        publishLocation: 'pipeline'
+    - task: ArchiveFiles@2
+      displayName: Zip flyway migrations folder
+      condition: succeededOrFailed()
+      inputs:
+        rootFolderOrFile: $(FLYWAY_LOCATIONS)
+        includeRootFolder: false 
+        archiveType: 'zip' # Options: zip, 7z, tar, wim
+        #tarCompression: 'gz' # Optional. Options: gz, bz2, xz, none
+        archiveFile: '$(Build.ArtifactStagingDirectory)/Migrations.zip' 
+        #replaceExistingArchive: true 
+        #verbose: # Optional
+        #quiet: # Optional
+    - task: PublishPipelineArtifact@1
+      displayName: Publish Build Artifact
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)/Migrations.zip'
+        artifact: 2.Flyway-build-artifact
+        publishLocation: 'pipeline'
 - stage: Deploytoproduction
   displayName: Deploy to production
   jobs:
