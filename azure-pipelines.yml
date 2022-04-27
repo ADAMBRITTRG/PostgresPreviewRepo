@@ -98,6 +98,24 @@ stages:
         artifact: 2.Flyway-build-artifact
         publishLocation: 'pipeline'
 
+# As waitForValidation can only be used in an agentless (server) job, we are keeping it in its own stage
+# Consider using "- deployment" as a job in combination with an Azure DevOps "environment" for a more advanced approval step
+- stage: 'Review_Database_Changes'
+  displayName: Review / Approval
+  jobs:
+  - job: waitForValidation
+    displayName: Wait for manual approval
+    pool: server
+    timeoutInMinutes: 4320 # job times out in 3 days
+    steps:
+    - task: ManualValidation@0
+      timeoutInMinutes: 5 # set 1440 for 1 day time out
+      inputs:
+        notifyUsers: |
+          adam.britt@red-gate.com
+#          stephanie.herr@red-gate.com
+        instructions: 'Please review all pre-release artifacts before approving the deployment'
+        onTimeout: 'resume'
 
 - stage: 'Deploy'
   displayName: Database Deployment
