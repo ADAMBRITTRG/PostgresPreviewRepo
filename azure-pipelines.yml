@@ -98,6 +98,53 @@ stages:
         artifact: 2.Flyway-build-artifact
         publishLocation: 'pipeline'
 
+- stage: "Pre_Release"
+  displayName: Pre-Release Checks
+  jobs:
+  - job: Deployment_Rehearsal
+    steps:
+    # - checkout: none # need to check out to use the checked in flyway command line (set to non once Docker version is released)
+    - task: CmdLine@2
+      displayName: Flyway info (pre-rehearsal)
+      inputs:
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info -X 
+        -user=$(QA_USER) -password=$(QA_PASSWORD) 
+        -url='$(QA_URL)'
+        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+    - task: CmdLine@2
+      displayName: Changes Report (using flyway check)
+      inputs:
+        script: "cd flyway; ./flyway check -changes -locations=filesystem:$(FLYWAY_LOCATIONS) 
+        -check.tempUrl='$(EMPTY_URL)' 
+        -check.tempUsername=$(EMPTY_USER) -check.tempPassword=$(EMPTY_PASSWORD) 
+        -url='$(QA_URL)' 
+        -user=$(QAE_USER) -password=$(QA_PASSWORD) 
+        -licenseKey=$(FLYWAY_LICENSE_KEY) 
+        -check.outputLocation=$(Build.ArtifactStagingDirectory)"
+    - task: CmdLine@2
+      displayName: 'Changes.sql (dry run script)'
+      inputs:
+        script: |
+          container=$(docker create -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway migrate -dryRunOutput=/flyway/reports/changes.sql -outOfOrder=true -schemas=dbo -user=$(QA_USER) -password=$(QA_PASSWORD) -url='$(QA_URL)' -licenseKey=$(FLYWAY_LICENSE_KEY) -errorOverrides=S0001:0:I-)
+          docker start -a ${container}
+          docker cp ${container}:/flyway/reports/changes.sql $(Build.ArtifactStagingDirectory)
+    - task: CmdLine@2
+      enabled: true
+      displayName: SQL static analysis on dry run script
+      inputs:
+        script:
+          "docker run --rm -i -v $(Build.ArtifactStagingDirectory):/sql sqlfluff/sqlfluff:latest lint changes.sql
+          --dialect $(SQLFLUFF_DIALECT) 
+          --nofail 
+          > $(Build.ArtifactStagingDirectory)/SQLFluff_dryrun_results.txt"
+    - task: PublishPipelineArtifact@1
+      displayName: Publish Report Artifacts
+      condition: succeededOrFailed()
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifact: 3.Flyway-pre-release-reports
+        publishLocation: 'pipeline'
+
 # As waitForValidation can only be used in an agentless (server) job, we are keeping it in its own stage
 # Consider using "- deployment" as a job in combination with an Azure DevOps "environment" for a more advanced approval step
 - stage: 'Review_Database_Changes'
