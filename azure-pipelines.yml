@@ -71,9 +71,18 @@ stages:
         targetPath: '$(Build.Repository.LocalPath)/PostgresPreview/migrations'
         artifact: Flyway-migrations
         publishLocation: 'pipeline'
+    - task: PublishPipelineArtifact@1
+      displayName: Publish CI Report Artifacts
+      condition: succeededOrFailed()
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifact: 1.Flyway-CI-reports
+        publishLocation: 'pipeline'
 
-- stage: Deploy
-  displayName: Database Deployment
+
+
+- stage: Deploytoproduction
+  displayName: Deploy to production
   jobs:
   - job: DeployToProd
     steps:
@@ -109,28 +118,3 @@ stages:
         -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
         -url='$(PROD_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)"
-
-##    - task: CmdLine@2
-##      displayName: Flyway info (pre-deployment)
-##      inputs:
-##        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway info 
-##        -user=$(DB_PROD_USER) -password=$(DB_PROD_PASSWORD) 
-##        -url='$(DB_PROD_URL)'
-##        -licenseKey=$(FLYWAY_LICENSE_KEY)"
-##    - task: CmdLine@2
-##      enabled: true
-##      displayName: Flyway migrate
-##      inputs:
-##        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway migrate 
-##        -outOfOrder=true 
-##        -user=$(DB_PROD_USER) -password=$(DB_PROD_PASSWORD) 
-##        -url='$(DB_PROD_URL)'
-##        -licenseKey=$(FLYWAY_LICENSE_KEY)
-##        -errorOverrides=S0001:0:I-"
-##    - task: CmdLine@2
-##      displayName: Flyway info (post-deployment)
-##      inputs:
-##        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway info 
-##        -user=$(DB_PROD_USER) -password=$(DB_PROD_PASSWORD) 
-##        -url='$(DB_PROD_URL)'
-##        -licenseKey=$(FLYWAY_LICENSE_KEY)"
