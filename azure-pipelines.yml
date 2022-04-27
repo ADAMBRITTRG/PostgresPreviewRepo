@@ -143,40 +143,40 @@ stages:
         -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
         -url='$(PROD_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)"
-- stage: Deploytoproduction
-  displayName: Deploy to production
-  jobs:
-  - job: DeployToProd
-    steps:
+#- stage: Deploytoproduction
+#  displayName: Deploy to production
+#  jobs:
+#  - job: DeployToProd
+#    steps:
 # Ideally we should have a task that compares Acceptance with Prod to ensure they are at the same version
-    - download: current
-      artifact: Flyway-migrations
-    - task: CmdLine@2
-      displayName: ls-pipeline-workspace-folder
-      inputs:
-        script: "ls $(Pipeline.Workspace)"
-    - task: CmdLine@2
-      displayName: Flyway info (pre-deployment)
-      inputs:
-        script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway info
-        -outOfOrder=true -schemas=public
-        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
-        -url='$(PROD_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)"
-    - task: CmdLine@2
-      displayName: Flyway migrate
-      inputs:
-        script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway migrate
-        -outOfOrder=true -schemas=public
-        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
-        -url='$(PROD_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)
-        -errorOverrides=S0001:0:I-"
-    - task: CmdLine@2
-      displayName: Flyway info (post-deployment)
-      inputs:
-        script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway info
-        -outOfOrder=true -schemas=public
-        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
-        -url='$(PROD_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+#    - download: current
+#      artifact: Flyway-migrations
+#    - task: CmdLine@2
+#      displayName: ls-pipeline-workspace-folder
+#      inputs:
+#        script: "ls $(Pipeline.Workspace)"
+#    - task: CmdLine@2
+#      displayName: Flyway info (pre-deployment)
+#      inputs:
+#        script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway info
+#        -outOfOrder=true -schemas=public
+#        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
+#        -url='$(PROD_URL)'
+#        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+#    - task: CmdLine@2
+#      displayName: Flyway migrate
+#      inputs:
+#        script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway migrate
+#        -outOfOrder=true -schemas=public
+#        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
+#        -url='$(PROD_URL)'
+#        -licenseKey=$(FLYWAY_LICENSE_KEY)
+#        -errorOverrides=S0001:0:I-"
+#    - task: CmdLine@2
+#      displayName: Flyway info (post-deployment)
+#      inputs:
+#        script: "docker run --rm -v $(Pipeline.Workspace)/Flyway-migrations:/flyway/sql flyway/flyway info
+#        -outOfOrder=true -schemas=public
+#        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
+#        -url='$(PROD_URL)'
+#        -licenseKey=$(FLYWAY_LICENSE_KEY)"
