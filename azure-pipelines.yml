@@ -111,16 +111,16 @@ stages:
         -user=$(QA_USER) -password=$(QA_PASSWORD) 
         -url='$(QA_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)"
-    - task: CmdLine@2
-      displayName: Changes Report (using flyway check)
-      inputs:
-        script: "cd flyway; ./flyway check -changes -locations=filesystem:$(FLYWAY_LOCATIONS) 
-        -check.tempUrl='$(EMPTY_URL)' 
-        -check.tempUsername=$(EMPTY_USER) -check.tempPassword=$(EMPTY_PASSWORD) 
-        -url='$(QA_URL)' 
-        -user=$(QA_USER) -password=$(QA_PASSWORD) 
-        -licenseKey=$(FLYWAY_LICENSE_KEY) 
-        -check.outputLocation=$(Build.ArtifactStagingDirectory)"
+#    - task: CmdLine@2
+#      displayName: Changes Report (using flyway check)
+#      inputs:
+#        script: "cd flyway; ./flyway check -changes -locations=filesystem:$(FLYWAY_LOCATIONS) 
+#        -check.tempUrl='$(EMPTY_URL)' 
+#        -check.tempUsername=$(EMPTY_USER) -check.tempPassword=$(EMPTY_PASSWORD) 
+#        -url='$(QA_URL)' 
+#        -user=$(QA_USER) -password=$(QA_PASSWORD) 
+#        -licenseKey=$(FLYWAY_LICENSE_KEY) 
+#        -check.outputLocation=$(Build.ArtifactStagingDirectory)"
     - task: CmdLine@2
       displayName: 'Changes.sql (dry run script)'
       inputs:
