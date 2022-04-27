@@ -1,0 +1,20 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"actors\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"name\"",
+          "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"year\"",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}

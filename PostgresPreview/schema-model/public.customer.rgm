@@ -118,6 +118,11 @@
           "objectType": "column",
           "fullName": "\"fiftytwocolumn\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"uniquereference\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
