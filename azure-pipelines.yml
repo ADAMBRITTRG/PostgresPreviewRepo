@@ -128,15 +128,15 @@ stages:
           container=$(docker create -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway migrate -dryRunOutput=/flyway/reports/changes.sql -outOfOrder=true -schemas=dbo -user=$(QA_USER) -password=$(QA_PASSWORD) -url='$(QA_URL)' -licenseKey=$(FLYWAY_LICENSE_KEY) -errorOverrides=S0001:0:I-)
           docker start -a ${container}
           docker cp ${container}:/flyway/reports/changes.sql $(Build.ArtifactStagingDirectory)
-    - task: CmdLine@2
-      enabled: true
-      displayName: SQL static analysis on dry run script
-      inputs:
-        script:
-          "docker run --rm -i -v $(Build.ArtifactStagingDirectory):/sql sqlfluff/sqlfluff:latest lint changes.sql
-          --dialect $(SQLFLUFF_DIALECT) 
-          --nofail 
-          > $(Build.ArtifactStagingDirectory)/SQLFluff_dryrun_results.txt"
+#    - task: CmdLine@2
+#      enabled: true
+#      displayName: SQL static analysis on dry run script
+#      inputs:
+#        script:
+#          "docker run --rm -i -v $(Build.ArtifactStagingDirectory):/sql sqlfluff/sqlfluff:latest lint changes.sql
+#          --dialect $(SQLFLUFF_DIALECT) 
+#          --nofail 
+#          > $(Build.ArtifactStagingDirectory)/SQLFluff_dryrun_results.txt"
     - task: PublishPipelineArtifact@1
       displayName: Publish Report Artifacts
       condition: succeededOrFailed()
