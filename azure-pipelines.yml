@@ -118,7 +118,7 @@ stages:
         -check.tempUrl='$(EMPTY_URL)' 
         -check.tempUsername=$(EMPTY_USER) -check.tempPassword=$(EMPTY_PASSWORD) 
         -url='$(QA_URL)' 
-        -user=$(QAE_USER) -password=$(QA_PASSWORD) 
+        -user=$(QA_USER) -password=$(QA_PASSWORD) 
         -licenseKey=$(FLYWAY_LICENSE_KEY) 
         -check.outputLocation=$(Build.ArtifactStagingDirectory)"
     - task: CmdLine@2
