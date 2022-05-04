@@ -123,6 +123,11 @@
           "objectType": "column",
           "fullName": "\"uniquereference\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"description\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
