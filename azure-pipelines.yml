@@ -26,7 +26,7 @@ variables:
 
 no
 stages:
-- stage: "CI"
+ stage: "CI"
   displayName: "Database CI"
   jobs:
   - job: Database_Build_and_Test
