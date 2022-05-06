@@ -107,9 +107,9 @@ stages:
       displayName: Flyway info (pre-rehearsal)
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info -X 
-        -user=$(QA_USER) -password=$(QA_PASSWORD) 
-        -url='$(QA_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+          -user=$(QA_USER) -password=$(QA_PASSWORD) 
+          -url='$(QA_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)"
 #    - task: CmdLine@2
 #      displayName: Changes Report (using flyway check)
 #      inputs:
