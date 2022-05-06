@@ -54,11 +54,11 @@ stages:
       displayName: Placeholder for unit testing
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway check -unitTest 
-        -outOfOrder=true -schemas=public
-        -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
-        -url='$(EMPTY_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)
-        -check.outputLocation=$(Build.ArtifactStagingDirectory)"
+          -outOfOrder=true -schemas=public
+          -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
+          -url='$(EMPTY_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)
+          -check.outputLocation=$(Build.ArtifactStagingDirectory)"
     - task: CmdLine@2
       enabled: false
       displayName: SQL static analysis (uses SQLFluff)
