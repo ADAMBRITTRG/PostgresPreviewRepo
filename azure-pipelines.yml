@@ -41,7 +41,7 @@ stages:
         -url='$(EMPTY_URL)'
         -licenseKey=$(FLYWAY_LICENSE_KEY)
         -errorOverrides=S0001:0:I-
-        > $(Build.ArtifactStagingDirectory)/Build_results.txt"
+        >$(Build.ArtifactStagingDirectory)/Build_results.txt"
     - task: CmdLine@2
       displayName: Flyway info (post build)
       inputs:
