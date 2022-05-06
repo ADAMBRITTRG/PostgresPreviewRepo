@@ -199,7 +199,7 @@ stages:
           -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
           -url='$(PROD_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)
-        -  errorOverrides=S0001:0:I-"
+          -errorOverrides=S0001:0:I-"
     - task: CmdLine@2
       displayName: Flyway info (post-deployment)
       inputs:
