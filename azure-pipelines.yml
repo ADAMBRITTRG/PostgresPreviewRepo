@@ -204,9 +204,9 @@ stages:
       displayName: Flyway info (post-deployment)
       inputs:
         script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway info 
-        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
-        -url='$(PROD_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+          -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
+          -url='$(PROD_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)"
 #- stage: Deploytoproduction
 #  displayName: Deploy to production
 #  jobs:
