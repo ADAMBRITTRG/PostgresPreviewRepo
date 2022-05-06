@@ -24,9 +24,8 @@ variables:
 - name: FLYWAY_LOCATIONS
   value: $(Build.Repository.LocalPath)/PostgresPreview/migrations
 
-no
 stages:
- stage: "CI"
+- stage: "CI"
   displayName: "Database CI"
   jobs:
   - job: Database_Build_and_Test
