@@ -35,7 +35,7 @@ stages:
     - task: CmdLine@2
       displayName: Run all migrations on a clean database
       inputs:
-        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate           
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
         -outOfOrder=true -schemas=public
         -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
         -url='$(EMPTY_URL)'
@@ -54,7 +54,7 @@ stages:
       enabled: false
       displayName: Placeholder for unit testing
       inputs:
-        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway check -unitTest
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway check -unitTest 
         -outOfOrder=true -schemas=public
         -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
         -url='$(EMPTY_URL)'
