@@ -23,7 +23,7 @@ variables:
 # Where where your flyway migrations reside in your project
 - name: FLYWAY_LOCATIONS
   value: $(Build.Repository.LocalPath)/PostgresPreview/migrations
-  - name: PGTAP_LOCATIONS
+- name: PGTAP_LOCATIONS
   value: $(Build.Repository.LocalPath)/PostgresPreview/pgTapTests
 
 stages:
