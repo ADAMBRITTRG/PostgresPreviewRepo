@@ -59,7 +59,7 @@ stages:
         -h $(EMPTY_URL) 
         -p $(PG_PORT) 
         -d $(PGTAP_DATABASE) -u $(EMPTY_USER) -w $(EMPTY_PASSWORD) 
-        -t $(PGTAP_LOCATIONS)"
+        -v $(PGTAP_LOCATIONS)"
     - task: CmdLine@2
       enabled: false
       displayName: SQL static analysis (uses SQLFluff)
