@@ -52,7 +52,7 @@ stages:
           -url='$(EMPTY_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)"
     - task: CmdLine@2
-#      enabled: false 
+      enabled: false 
       displayName: Placeholder for unit testing
       inputs:
         script: "$ docker run -i -t -rm --name pgtap hbpmip/pgtap:1.0.0-3
