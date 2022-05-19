@@ -112,6 +112,7 @@ stages:
           -url='$(DB_TEMP_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)"
     - task: CmdLine@2
+      enabled: false
       displayName: Changes Report (using flyway check)
       inputs:
         script: "cd flyway; ./flyway check -changes -locations=filesystem:$(FLYWAY_LOCATIONS) 
