@@ -56,7 +56,7 @@ stages:
       displayName: Placeholder for unit testing
       inputs:
         script: "$ docker run -i -t -rm --name pgtap test hbpmip/pgtap:1.0.0-3
-        -h $(PGTAP_URL) -d $(PGTAP_DATABASE) -u $(EMPTY_USER) -w $(EMPTY_PASSWORD) -v $(PGTAP_LOCATIONS)"
+        -h $(PGTAP_URL) -d $(PGTAP_DATABASE) -u $(EMPTY_USER) -w $(EMPTY_PASSWORD) -v $(PGTAP_LOCATIONS)/test-add.sql"
     - task: CmdLine@2
       enabled: false
       displayName: SQL static analysis (uses SQLFluff)
