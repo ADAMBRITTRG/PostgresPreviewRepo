@@ -23,6 +23,8 @@ variables:
 # Where where your flyway migrations reside in your project
 - name: FLYWAY_LOCATIONS
   value: $(Build.Repository.LocalPath)/PostgresPreview/migrations
+  - name: PGTAP_LOCATIONS
+  value: $(Build.Repository.LocalPath)/PostgresPreview/pgTapTests
 
 stages:
 - stage: "CI"
@@ -53,11 +55,9 @@ stages:
       enabled: false
       displayName: Placeholder for unit testing
       inputs:
-        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway check -unitTest 
-          -outOfOrder=true -schemas=public
-          -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
+        script: "docker run --rm -v $(PGTAP_LOCATIONS):/t walm/pgtap \
           -url='$(EMPTY_URL)'
-          -licenseKey=$(FLYWAY_LICENSE_KEY)
+          -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
           -check.outputLocation=$(Build.ArtifactStagingDirectory)"
     - task: CmdLine@2
       enabled: false
