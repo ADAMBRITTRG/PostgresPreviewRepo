@@ -56,8 +56,9 @@ stages:
       displayName: Placeholder for unit testing
       inputs:
         script: "docker run --rm -v $(PGTAP_LOCATIONS):/t walm/pgtap \
-          -url='$(EMPTY_URL)'
-          -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
+          -h='$(PGTAP_URL)'
+          -u=$(EMPTY_USER) -w=$(EMPTY_PASSWORD) 
+          -d=$(PGTAP_DATABASE)
           -check.outputLocation=$(Build.ArtifactStagingDirectory)"
     - task: CmdLine@2
       enabled: false
