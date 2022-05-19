@@ -23,7 +23,8 @@ variables:
 # Where where your flyway migrations reside in your project
 - name: FLYWAY_LOCATIONS
   value: $(Build.Repository.LocalPath)/PostgresPreview/migrations
-
+- name: PGTAP_LOCATIONS
+  value: $(Build.Repository.LocalPath)/PostgresPreview/pgTapTests
 
 stages:
 - stage: "CI"
@@ -36,30 +37,25 @@ stages:
       displayName: Run all migrations on a clean database
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
-        -outOfOrder=true -schemas=public
-        -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
-        -url='$(EMPTY_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)
-        -errorOverrides=S0001:0:I-
-        > $(Build.ArtifactStagingDirectory)/Build_results.txt"
+          -outOfOrder=true -schemas=public
+          -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
+          -url='$(EMPTY_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)
+          -errorOverrides=S0001:0:I-
+          > $(Build.ArtifactStagingDirectory)/Build_results.txt"
     - task: CmdLine@2
       displayName: Flyway info (post build)
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info 
-        -outOfOrder=true -schemas=public
-        -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
-        -url='$(EMPTY_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+          -outOfOrder=true -schemas=public
+          -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
+          -url='$(EMPTY_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)"
     - task: CmdLine@2
-      enabled: false
+#      enabled: false $ docker run -i -t --rm --name pgtap --link db-under-test:db -e PASSWORD=postgres -v $(FLYWAY_LOCATIONS):/test hbpmip/pgtap:1.0.0-3
       displayName: Placeholder for unit testing
       inputs:
-        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway check -unitTest
-        -outOfOrder=true -schemas=public
-        -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
-        -url='$(EMPTY_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)
-        -check.outputLocation=$(Build.ArtifactStagingDirectory)"
+        script: "$ docker run -i -t --rm --name pgtap -h $(PGTAP_URL) -d $(PGTAP_DATABASE) -u $(EMPTY_USER) -w $(EMPTY_PASSWORD)  -v $(PGTAP_LOCATIONS):/test hbpmip/pgtap:1.0.0-3"
     - task: CmdLine@2
       enabled: false
       displayName: SQL static analysis (uses SQLFluff)
@@ -108,9 +104,9 @@ stages:
       displayName: Flyway info (pre-rehearsal)
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info -X 
-        -user=$(QA_USER) -password=$(QA_PASSWORD) 
-        -url='$(QA_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+          -user=$(QA_USER) -password=$(QA_PASSWORD) 
+          -url='$(QA_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)"
 #    - task: CmdLine@2
 #      displayName: Changes Report (using flyway check)
 #      inputs:
@@ -188,26 +184,26 @@ stages:
       displayName: Flyway info (pre-deployment)
       inputs:
         script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway info 
-        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
-        -url='$(PROD_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+          -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
+          -url='$(PROD_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)"
     - task: CmdLine@2
       enabled: true
       displayName: Flyway migrate
       inputs:
         script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway migrate 
-        -outOfOrder=true 
-        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
-        -url='$(PROD_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)
-        -errorOverrides=S0001:0:I-"
+          -outOfOrder=true 
+          -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
+          -url='$(PROD_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)
+          -errorOverrides=S0001:0:I-"
     - task: CmdLine@2
       displayName: Flyway info (post-deployment)
       inputs:
         script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway info 
-        -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
-        -url='$(PROD_URL)'
-        -licenseKey=$(FLYWAY_LICENSE_KEY)"
+          -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
+          -url='$(PROD_URL)'
+          -licenseKey=$(FLYWAY_LICENSE_KEY)"
 #- stage: Deploytoproduction
 #  displayName: Deploy to production
 #  jobs:
