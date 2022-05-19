@@ -55,7 +55,7 @@ stages:
 #      enabled: false $ docker run -i -t --rm --name pgtap --link db-under-test:db -e PASSWORD=postgres -v $(FLYWAY_LOCATIONS):/test hbpmip/pgtap:1.0.0-3
       displayName: Placeholder for unit testing
       inputs:
-        script: "$ docker run -i -t --rm --name pgtap --link HOST=$(PGTAP_URL) database=$(PGTAP_DATABASE) USER=$(EMPTY_USER) PASSWORD=$(EMPTY_PASSWORD)  -v $(PGTAP_LOCATIONS):/test hbpmip/pgtap:1.0.0-3"
+        script: "$ docker run -i -t --rm --name pgtap --link -h $(PGTAP_URL) -d $(PGTAP_DATABASE) -u $(EMPTY_USER) -w (EMPTY_PASSWORD)  -v $(PGTAP_LOCATIONS):/test hbpmip/pgtap:1.0.0-3"
     - task: CmdLine@2
       enabled: false
       displayName: SQL static analysis (uses SQLFluff)
