@@ -21,8 +21,8 @@ variables:
 - name: FLYWAY_CONFIG_FILES
   value: $(Build.Repository.LocalPath)/PostgresPreview/flyway.conf
 # Where where your flyway migrations reside in your project
-- name: FLYWAY_LOCATIONS
-  value: $(Build.Repository.LocalPath)/PostgresPreview/migrations
+#- name: FLYWAY_LOCATIONS
+#  value: $(Build.Repository.LocalPath)/PostgresPreview/migrations
 - name: PGTAP_LOCATIONS
   value: $(Build.Repository.LocalPath)/PostgresPreview/pgTapTests
 
@@ -38,8 +38,8 @@ stages:
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
           -outOfOrder=true -schemas=public
-          -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
-          -url='$(EMPTY_URL)'
+          -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) 
+          -url='$(DB_TEMP_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)
           -errorOverrides=S0001:0:I-
           > $(Build.ArtifactStagingDirectory)/Build_results.txt"
@@ -48,15 +48,17 @@ stages:
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info 
           -outOfOrder=true -schemas=public
-          -user=$(EMPTY_USER) -password=$(EMPTY_PASSWORD) 
-          -url='$(EMPTY_URL)'
+          -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) 
+          -url='$(DB_TEMP_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)"
     - task: CmdLine@2
-#      enabled: false 
+      enabled: false 
       displayName: Placeholder for unit testing
       inputs:
-        script: "$ docker run -i -t -rm --name pgtap hbpmip/pgtap:1.0.0-3
-        -h $(PGTAP_URL) -p $(PG_PORT) -d $(PGTAP_DATABASE) -u $(EMPTY_USER) -w $(EMPTY_PASSWORD) -v $(PGTAP_LOCATIONS)"
+        script: "docker run --rm -v $(PGTAP_LOCATIONS):hbpmip/pgtap:1.0.0-3
+        -h $(PGTAP_URL) 
+        -p $(PG_PORT) 
+        -d $(PGTAP_DATABASE) -u $(EMPTY_USER) -w $(EMPTY_PASSWORD) "
     - task: CmdLine@2
       enabled: false
       displayName: SQL static analysis (uses SQLFluff)
@@ -104,36 +106,39 @@ stages:
     - task: CmdLine@2
       displayName: Flyway info (pre-rehearsal)
       inputs:
+#change to acceptance once that is setup in clone
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info -X 
-          -user=$(QA_USER) -password=$(QA_PASSWORD) 
-          -url='$(QA_URL)'
+          -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) 
+          -url='$(DB_TEMP_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)"
-#    - task: CmdLine@2
-#      displayName: Changes Report (using flyway check)
-#      inputs:
-#        script: "cd flyway; ./flyway check -changes -locations=filesystem:$(FLYWAY_LOCATIONS) 
-#        -check.tempUrl='$(EMPTY_URL)' 
-#        -check.tempUsername=$(EMPTY_USER) -check.tempPassword=$(EMPTY_PASSWORD) 
-#        -url='$(QA_URL)' 
-#        -user=$(QA_USER) -password=$(QA_PASSWORD) 
-#        -licenseKey=$(FLYWAY_LICENSE_KEY) 
-#        -check.outputLocation=$(Build.ArtifactStagingDirectory)"
+    - task: CmdLine@2
+      enabled: false
+      displayName: Changes Report (using flyway check)
+      inputs:
+        script: "cd flyway; ./flyway check -changes -locations=filesystem:$(FLYWAY_LOCATIONS) 
+          -check.tempUrl='$(DB_TEMP_URL)' 
+          -check.tempUsername=$(DB_TEMP_USER) -check.tempPassword=$(DB_TEMP_PASSWORD) 
+          -url='$(DB_PROD_URL)' 
+          -user=$(DB_PROD_USER) -password=$(DB_PROD_PASSWORD) 
+          -licenseKey=$(FLYWAY_LICENSE_KEY) 
+          -check.outputLocation=$(Build.ArtifactStagingDirectory)"
     - task: CmdLine@2
       displayName: 'Changes.sql (dry run script)'
       inputs:
         script: |
-          container=$(docker create -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway migrate -dryRunOutput=/flyway/reports/changes.sql -outOfOrder=true -schemas=dbo -user=$(QA_USER) -password=$(QA_PASSWORD) -url='$(QA_URL)' -licenseKey=$(FLYWAY_LICENSE_KEY) -errorOverrides=S0001:0:I-)
+          container=$(docker create -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway migrate -dryRunOutput=/flyway/reports/changes.sql -outOfOrder=true -schemas=dbo -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) -url='$(DB_TEMP_URL)' -licenseKey=$(FLYWAY_LICENSE_KEY) -errorOverrides=S0001:0:I-)
           docker start -a ${container}
           docker cp ${container}:/flyway/reports/changes.sql $(Build.ArtifactStagingDirectory)
-#    - task: CmdLine@2
-#      enabled: true
-#      displayName: SQL static analysis on dry run script
-#      inputs:
-#        script:
-#          "docker run --rm -i -v $(Build.ArtifactStagingDirectory):/sql sqlfluff/sqlfluff:latest lint changes.sql
-#          --dialect $(SQLFLUFF_DIALECT) 
-#          --nofail 
-#          > $(Build.ArtifactStagingDirectory)/SQLFluff_dryrun_results.txt"
+    - task: CmdLine@2
+      enabled: true
+      displayName: SQL static analysis on dry run script
+      inputs:
+        script:
+          "docker run --rm -i -v $(Build.ArtifactStagingDirectory):/sql sqlfluff/sqlfluff:latest lint changes.sql 
+            --dialect $(SQLFLUFF_DIALECT) 
+            --exclude-rules L016 
+            --nofail 
+            > $(Build.ArtifactStagingDirectory)/SQLFluff_dryrun_results.txt"
     - task: PublishPipelineArtifact@1
       displayName: Publish Report Artifacts
       condition: succeededOrFailed()
