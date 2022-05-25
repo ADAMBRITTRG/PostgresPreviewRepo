@@ -1,0 +1,15 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"ScwabTable\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"Date\"",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}

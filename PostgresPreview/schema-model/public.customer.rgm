@@ -133,6 +133,11 @@
           "objectType": "column",
           "fullName": "\"astcolumn\"",
           "type": "varchar"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"schwabcolumn\"",
+          "type": "varchar"
         }
       ],
       "primaryKeys": [
