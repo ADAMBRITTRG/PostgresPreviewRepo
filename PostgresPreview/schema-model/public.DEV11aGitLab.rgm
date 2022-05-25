@@ -1,0 +1,15 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"DEV11aGitLab\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"Date\"",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}
