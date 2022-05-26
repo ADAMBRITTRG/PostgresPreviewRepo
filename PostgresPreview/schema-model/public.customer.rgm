@@ -56,12 +56,12 @@
         },
         {
           "objectType": "column",
-          "fullName": "\"phone\"",
+          "fullName": "\"website\"",
           "type": "varchar"
         },
         {
           "objectType": "column",
-          "fullName": "\"website\"",
+          "fullName": "\"phone\"",
           "type": "varchar"
         },
         {
@@ -121,17 +121,12 @@
         },
         {
           "objectType": "column",
-          "fullName": "\"uniquereference\"",
-          "type": "varchar"
-        },
-        {
-          "objectType": "column",
           "fullName": "\"description\"",
           "type": "varchar"
         },
         {
           "objectType": "column",
-          "fullName": "\"astcolumn\"",
+          "fullName": "\"uniquereference\"",
           "type": "varchar"
         },
         {
