@@ -1,0 +1,15 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"Dev13\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"Date\"",
+          "type": "date"
+        }
+      ]
+    }
+  ]
+}
