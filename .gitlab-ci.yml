@@ -24,8 +24,8 @@ build-job:       # This job runs in the build stage, which runs first.
   entrypoint: [""]
  stage: CI
  script:
-  - flyway clean migrate -url="$DB_TEMP_URL" -user="$DB_TEMP_USER" -password="$DB_TEMP_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations"PostgresPreview/migrations"
-  - flyway info -url="$DB_TEMP_URL" -user="$DB_TEMP_USER" -password="$DB_TEMP_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations"PostgresPreview/migrations"
+  - flyway clean migrate -url="$DB_TEMP_URL" -user="$DB_TEMP_USER" -password="$DB_TEMP_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations="PostgresPreview/migrations"
+  - flyway info -url="$DB_TEMP_URL" -user="$DB_TEMP_USER" -password="$DB_TEMP_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations="PostgresPreview/migrations"
 
 unit-test-job:   # This job runs in the test stage.
   stage: Pre-Release Checks    # It only starts when the job in the build stage completes successfully.
@@ -47,6 +47,6 @@ deploy-job:      # This job runs in the deploy stage.
   entrypoint: [""]
  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
  script:
-    - flyway info -url="$DB_PROD_URL" -user="$DB_PROD_USER" -password="$DB_PROD_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations"PostgresPreview/migrations"
-    - flyway migrate -url="$DB_PROD_URL" -user="$DB_PROD_USER" -password="$DB_PROD_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations"PostgresPreview/migrations"
-    - flyway info -url="$DB_PROD_URL" -user="$DB_PROD_USER" -password="$DB_PROD_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations"PostgresPreview/migrations"
+    - flyway info -url="$DB_PROD_URL" -user="$DB_PROD_USER" -password="$DB_PROD_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations="PostgresPreview/migrations"
+    - flyway migrate -url="$DB_PROD_URL" -user="$DB_PROD_USER" -password="$DB_PROD_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations="PostgresPreview/migrations"
+    - flyway info -url="$DB_PROD_URL" -user="$DB_PROD_USER" -password="$DB_PROD_PASSWORD" -licenseKey="$FLYWAY_LICENSE_KEY" -locations="PostgresPreview/migrations"
