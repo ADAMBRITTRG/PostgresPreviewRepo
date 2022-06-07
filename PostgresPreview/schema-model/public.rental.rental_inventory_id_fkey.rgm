@@ -9,32 +9,6 @@
       "referencedTable": "\"public\".\"inventory\"",
       "referencedColumns": [
         "\"inventory_id\""
-      ],
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"inventory\""
-            },
-            {
-              "column": "\"inventory_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        },
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"rental\""
-            },
-            {
-              "column": "\"inventory_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
       ]
     }
   ]

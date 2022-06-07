@@ -9,32 +9,6 @@
       "referencedTable": "\"public\".\"customer\"",
       "referencedColumns": [
         "\"customer_id\""
-      ],
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"customer\""
-            },
-            {
-              "column": "\"customer_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        },
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"payment_p2020_02\""
-            },
-            {
-              "column": "\"customer_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
       ]
     }
   ]

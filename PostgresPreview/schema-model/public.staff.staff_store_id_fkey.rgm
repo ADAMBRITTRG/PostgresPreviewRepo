@@ -9,32 +9,6 @@
       "referencedTable": "\"public\".\"store\"",
       "referencedColumns": [
         "\"store_id\""
-      ],
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"store\""
-            },
-            {
-              "column": "\"store_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        },
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"staff\""
-            },
-            {
-              "column": "\"store_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
       ]
     }
   ]

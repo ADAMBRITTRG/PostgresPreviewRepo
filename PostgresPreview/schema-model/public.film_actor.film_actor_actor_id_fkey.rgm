@@ -9,32 +9,6 @@
       "referencedTable": "\"public\".\"actor\"",
       "referencedColumns": [
         "\"actor_id\""
-      ],
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"actor\""
-            },
-            {
-              "column": "\"actor_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        },
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"film_actor\""
-            },
-            {
-              "column": "\"actor_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
       ]
     }
   ]

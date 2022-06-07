@@ -9,32 +9,6 @@
       "referencedTable": "\"public\".\"staff\"",
       "referencedColumns": [
         "\"staff_id\""
-      ],
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"staff\""
-            },
-            {
-              "column": "\"staff_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        },
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"payment_p2020_01\""
-            },
-            {
-              "column": "\"staff_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
       ]
     }
   ]

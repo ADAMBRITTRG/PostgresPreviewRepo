@@ -9,32 +9,6 @@
       "referencedTable": "\"public\".\"category\"",
       "referencedColumns": [
         "\"category_id\""
-      ],
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"category\""
-            },
-            {
-              "column": "\"category_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        },
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"film_category\""
-            },
-            {
-              "column": "\"category_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
       ]
     }
   ]

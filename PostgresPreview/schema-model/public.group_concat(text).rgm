@@ -1,0 +1,10 @@
+{
+  "objects": [
+    {
+      "objectType": "aggregate",
+      "fullName": "\"public\".\"group_concat(text)\"",
+      "transitionFunction": "public._group_concat",
+      "stateType": "text"
+    }
+  ]
+}

@@ -9,32 +9,6 @@
       "referencedTable": "\"public\".\"language\"",
       "referencedColumns": [
         "\"language_id\""
-      ],
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"language\""
-            },
-            {
-              "column": "\"language_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        },
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"film\""
-            },
-            {
-              "column": "\"original_language_id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
       ]
     }
   ]
