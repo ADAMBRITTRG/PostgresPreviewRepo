@@ -51,20 +51,6 @@
           "fullName": "\"address_pkey\"",
           "columns": [
             "\"address_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"address\""
-                },
-                {
-                  "column": "\"address_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

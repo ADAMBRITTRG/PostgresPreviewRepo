@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"idx_fk_country_id\"",
+      "table": "\"public\".\"city\"",
+      "type": "btree",
+      "columns": [
+        "\"country_id\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

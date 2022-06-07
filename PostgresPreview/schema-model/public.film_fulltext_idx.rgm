@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"film_fulltext_idx\"",
+      "table": "\"public\".\"film\"",
+      "type": "gist",
+      "columns": [
+        "\"fulltext\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

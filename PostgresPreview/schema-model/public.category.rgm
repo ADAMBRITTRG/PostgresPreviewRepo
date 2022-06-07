@@ -26,20 +26,6 @@
           "fullName": "\"category_pkey\"",
           "columns": [
             "\"category_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"category\""
-                },
-                {
-                  "column": "\"category_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

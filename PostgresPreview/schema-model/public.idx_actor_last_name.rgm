@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"idx_actor_last_name\"",
+      "table": "\"public\".\"actor\"",
+      "type": "btree",
+      "columns": [
+        "\"last_name\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

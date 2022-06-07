@@ -1,0 +1,21 @@
+{
+  "objects": [
+    {
+      "objectType": "view",
+      "fullName": "\"public\".\"sales_by_film_category\"",
+      "text": "SELECT c.name AS category,\n    sum(p.amount) AS total_sales\n   FROM (((((public.payment p\n     JOIN public.rental r ON ((p.rental_id = r.rental_id)))\n     JOIN public.inventory i ON ((r.inventory_id = i.inventory_id)))\n     JOIN public.film f ON ((i.film_id = f.film_id)))\n     JOIN public.film_category fc ON ((f.film_id = fc.film_id)))\n     JOIN public.category c ON ((fc.category_id = c.category_id)))\n  GROUP BY c.name\n  ORDER BY (sum(p.amount)) DESC;",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"category\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"total_sales\"",
+          "type": "numeric"
+        }
+      ]
+    }
+  ]
+}

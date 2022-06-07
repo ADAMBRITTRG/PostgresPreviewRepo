@@ -66,20 +66,6 @@
           "fullName": "\"staff_pkey\"",
           "columns": [
             "\"staff_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"staff\""
-                },
-                {
-                  "column": "\"staff_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

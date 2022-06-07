@@ -1,0 +1,26 @@
+{
+  "objects": [
+    {
+      "objectType": "view",
+      "fullName": "\"public\".\"sales_by_store\"",
+      "text": "SELECT ((c.city || ','::text) || cy.country) AS store,\n    ((m.first_name || ' '::text) || m.last_name) AS manager,\n    sum(p.amount) AS total_sales\n   FROM (((((((public.payment p\n     JOIN public.rental r ON ((p.rental_id = r.rental_id)))\n     JOIN public.inventory i ON ((r.inventory_id = i.inventory_id)))\n     JOIN public.store s ON ((i.store_id = s.store_id)))\n     JOIN public.address a ON ((s.address_id = a.address_id)))\n     JOIN public.city c ON ((a.city_id = c.city_id)))\n     JOIN public.country cy ON ((c.country_id = cy.country_id)))\n     JOIN public.staff m ON ((s.manager_staff_id = m.staff_id)))\n  GROUP BY cy.country, c.city, s.store_id, m.first_name, m.last_name\n  ORDER BY cy.country, c.city;",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"store\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"manager\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"total_sales\"",
+          "type": "numeric"
+        }
+      ]
+    }
+  ]
+}

@@ -22,18 +22,7 @@
         {
           "objectType": "column",
           "fullName": "\"release_year\"",
-          "type": "\"public\".\"year\"",
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "domain": "\"public\".\"year\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
-          ]
+          "type": "\"public\".\"year\""
         },
         {
           "objectType": "column",
@@ -68,18 +57,7 @@
         {
           "objectType": "column",
           "fullName": "\"rating\"",
-          "type": "\"public\".\"mpaa_rating\"",
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "enum": "\"public\".\"mpaa_rating\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
-          ]
+          "type": "\"public\".\"mpaa_rating\""
         },
         {
           "objectType": "column",
@@ -103,20 +81,6 @@
           "fullName": "\"film_pkey\"",
           "columns": [
             "\"film_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"film\""
-                },
-                {
-                  "column": "\"film_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

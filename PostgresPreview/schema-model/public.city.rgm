@@ -31,20 +31,6 @@
           "fullName": "\"city_pkey\"",
           "columns": [
             "\"city_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"city\""
-                },
-                {
-                  "column": "\"city_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

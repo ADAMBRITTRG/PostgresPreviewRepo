@@ -4,7 +4,7 @@
       "objectType": "function",
       "fullName": "\"public\".\"rewards_report(int4, numeric)\"",
       "text": "\r\nDECLARE\r\n    last_month_start DATE;\r\n    last_month_end DATE;\r\nrr RECORD;\r\ntmpSQL TEXT;\r\nBEGIN\r\n\r\n    /* Some sanity checks... */\r\n    IF min_monthly_purchases = 0 THEN\r\n        RAISE EXCEPTION 'Minimum monthly purchases parameter must be > 0';\r\n    END IF;\r\n    IF min_dollar_amount_purchased = 0.00 THEN\r\n        RAISE EXCEPTION 'Minimum monthly dollar amount purchased parameter must be > $0.00';\r\n    END IF;\r\n\r\n    last_month_start := CURRENT_DATE - '3 month'::interval;\r\n    last_month_start := to_date((extract(YEAR FROM last_month_start) || '-' || extract(MONTH FROM last_month_start) || '-01'),'YYYY-MM-DD');\r\n    last_month_end := LAST_DAY(last_month_start);\r\n\r\n    /*\r\n    Create a temporary storage area for Customer IDs.\r\n    */\r\n    CREATE TEMPORARY TABLE tmpCustomer (customer_id INTEGER NOT NULL PRIMARY KEY);\r\n\r\n    /*\r\n    Find all customers meeting the monthly purchase requirements\r\n    */\r\n\r\n    tmpSQL := 'INSERT INTO tmpCustomer (customer_id)\r\n        SELECT p.customer_id\r\n        FROM payment AS p\r\n        WHERE DATE(p.payment_date) BETWEEN '||quote_literal(last_month_start) ||' AND '|| quote_literal(last_month_end) || '\r\n        GROUP BY customer_id\r\n        HAVING SUM(p.amount) > '|| min_dollar_amount_purchased || '\r\n        AND COUNT(customer_id) > ' ||min_monthly_purchases ;\r\n\r\n    EXECUTE tmpSQL;\r\n\r\n    /*\r\n    Output ALL customer information of matching rewardees.\r\n    Customize output as needed.\r\n    */\r\n    FOR rr IN EXECUTE 'SELECT c.* FROM tmpCustomer AS t INNER JOIN customer AS c ON t.customer_id = c.customer_id' LOOP\r\n        RETURN NEXT rr;\r\n    END LOOP;\r\n\r\n    /* Clean up */\r\n    tmpSQL := 'DROP TABLE tmpCustomer';\r\n    EXECUTE tmpSQL;\r\n\r\nRETURN;\r\nEND\r\n",
-      "returnType": "\"public\".\"customer\"",
+      "returnType": "public.customer",
       "arguments": [
         {
           "name": "min_monthly_purchases",
@@ -17,18 +17,7 @@
           "mode": "IN"
         }
       ],
-      "language": "plpgsql",
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"customer\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
-      ]
+      "language": "plpgsql"
     }
   ]
 }

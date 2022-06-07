@@ -131,6 +131,11 @@
         },
         {
           "objectType": "column",
+          "fullName": "\"astcolumn\"",
+          "type": "varchar"
+        },
+        {
+          "objectType": "column",
           "fullName": "\"schwabcolumn\"",
           "type": "varchar"
         }
@@ -141,20 +146,6 @@
           "fullName": "\"customer_pkey\"",
           "columns": [
             "\"customer_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"customer\""
-                },
-                {
-                  "column": "\"customer_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

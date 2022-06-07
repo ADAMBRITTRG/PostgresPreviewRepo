@@ -31,20 +31,6 @@
           "fullName": "\"language_pkey\"",
           "columns": [
             "\"language_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"language\""
-                },
-                {
-                  "column": "\"language_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

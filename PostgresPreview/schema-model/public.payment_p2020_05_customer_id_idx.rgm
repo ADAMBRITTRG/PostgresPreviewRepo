@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"payment_p2020_05_customer_id_idx\"",
+      "table": "\"public\".\"payment_p2020_05\"",
+      "type": "btree",
+      "columns": [
+        "\"customer_id\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

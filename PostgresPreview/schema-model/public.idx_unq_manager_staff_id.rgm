@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"idx_unq_manager_staff_id\"",
+      "table": "\"public\".\"store\"",
+      "type": "btree",
+      "columns": [
+        "\"manager_staff_id\""
+      ],
+      "isUnique": "True"
+    }
+  ]
+}

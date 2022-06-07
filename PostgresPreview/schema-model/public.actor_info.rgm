@@ -1,0 +1,31 @@
+{
+  "objects": [
+    {
+      "objectType": "view",
+      "fullName": "\"public\".\"actor_info\"",
+      "text": "SELECT a.actor_id,\n    a.first_name,\n    a.last_name,\n    public.group_concat(DISTINCT ((c.name || ': '::text) || ( SELECT public.group_concat(f.title) AS group_concat\n           FROM ((public.film f\n             JOIN public.film_category fc_1 ON ((f.film_id = fc_1.film_id)))\n             JOIN public.film_actor fa_1 ON ((f.film_id = fa_1.film_id)))\n          WHERE ((fc_1.category_id = c.category_id) AND (fa_1.actor_id = a.actor_id))\n          GROUP BY fa_1.actor_id))) AS film_info\n   FROM (((public.actor a\n     LEFT JOIN public.film_actor fa ON ((a.actor_id = fa.actor_id)))\n     LEFT JOIN public.film_category fc ON ((fa.film_id = fc.film_id)))\n     LEFT JOIN public.category c ON ((fc.category_id = c.category_id)))\n  GROUP BY a.actor_id, a.first_name, a.last_name;",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"actor_id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"first_name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"last_name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"film_info\"",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "objects": [
+    {
+      "objectType": "view",
+      "fullName": "\"public\".\"customer_list\"",
+      "text": "SELECT cu.customer_id AS id,\n    ((cu.first_name || ' '::text) || cu.last_name) AS name,\n    a.address,\n    a.postal_code AS \"zip code\",\n    a.phone,\n    city.city,\n    country.country,\n        CASE\n            WHEN cu.activebool THEN 'active'::text\n            ELSE ''::text\n        END AS notes,\n    cu.store_id AS sid\n   FROM (((public.customer cu\n     JOIN public.address a ON ((cu.address_id = a.address_id)))\n     JOIN public.city ON ((a.city_id = city.city_id)))\n     JOIN public.country ON ((city.country_id = country.country_id)));",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"address\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"zip code\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"phone\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"city\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"country\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"notes\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"sid\"",
+          "type": "int4"
+        }
+      ]
+    }
+  ]
+}

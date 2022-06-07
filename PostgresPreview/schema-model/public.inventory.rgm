@@ -31,20 +31,6 @@
           "fullName": "\"inventory_pkey\"",
           "columns": [
             "\"inventory_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"inventory\""
-                },
-                {
-                  "column": "\"inventory_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

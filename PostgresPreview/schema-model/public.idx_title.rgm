@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"idx_title\"",
+      "table": "\"public\".\"film\"",
+      "type": "btree",
+      "columns": [
+        "\"title\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

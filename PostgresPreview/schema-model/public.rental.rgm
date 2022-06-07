@@ -46,20 +46,6 @@
           "fullName": "\"rental_pkey\"",
           "columns": [
             "\"rental_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"rental\""
-                },
-                {
-                  "column": "\"rental_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"idx_fk_payment_p2020_04_staff_id\"",
+      "table": "\"public\".\"payment_p2020_04\"",
+      "type": "btree",
+      "columns": [
+        "\"staff_id\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

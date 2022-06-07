@@ -31,20 +31,6 @@
           "fullName": "\"actor_pkey\"",
           "columns": [
             "\"actor_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"actor\""
-                },
-                {
-                  "column": "\"actor_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

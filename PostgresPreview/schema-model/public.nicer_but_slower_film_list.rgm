@@ -1,0 +1,51 @@
+{
+  "objects": [
+    {
+      "objectType": "view",
+      "fullName": "\"public\".\"nicer_but_slower_film_list\"",
+      "text": "SELECT film.film_id AS fid,\n    film.title,\n    film.description,\n    category.name AS category,\n    film.rental_rate AS price,\n    film.length,\n    film.rating,\n    public.group_concat((((upper(\"substring\"(actor.first_name, 1, 1)) || lower(\"substring\"(actor.first_name, 2))) || upper(\"substring\"(actor.last_name, 1, 1))) || lower(\"substring\"(actor.last_name, 2)))) AS actors\n   FROM ((((public.category\n     LEFT JOIN public.film_category ON ((category.category_id = film_category.category_id)))\n     LEFT JOIN public.film ON ((film_category.film_id = film.film_id)))\n     JOIN public.film_actor ON ((film.film_id = film_actor.film_id)))\n     JOIN public.actor ON ((film_actor.actor_id = actor.actor_id)))\n  GROUP BY film.film_id, film.title, film.description, category.name, film.rental_rate, film.length, film.rating;",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"fid\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"title\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"description\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"category\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"price\"",
+          "type": "numeric"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"length\"",
+          "type": "int2"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"rating\"",
+          "type": "\"public\".\"mpaa_rating\""
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"actors\"",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

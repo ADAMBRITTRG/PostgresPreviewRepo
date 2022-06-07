@@ -21,20 +21,6 @@
           "fullName": "\"subscriptions_pkey\"",
           "columns": [
             "\"id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"subscriptions\""
-                },
-                {
-                  "column": "\"id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

@@ -1,0 +1,15 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"idx_store_id_film_id\"",
+      "table": "\"public\".\"inventory\"",
+      "type": "btree",
+      "columns": [
+        "\"store_id\"",
+        "\"film_id\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

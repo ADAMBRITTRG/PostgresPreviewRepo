@@ -10,21 +10,7 @@
       "start": "1",
       "cache": "1",
       "cycle": "NO CYCLE",
-      "ownedBy": "\"public\".\"subscriptions\".\"id\"",
-      "dependencies": [
-        {
-          "dependencyType": "Requires",
-          "consumes": [
-            {
-              "table": "\"public\".\"subscriptions\""
-            },
-            {
-              "column": "\"id\""
-            }
-          ],
-          "propertiesRequiringRebuild": []
-        }
-      ]
+      "ownedBy": "\"public\".\"subscriptions\".\"id\""
     }
   ]
 }

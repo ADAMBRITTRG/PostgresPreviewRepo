@@ -26,20 +26,6 @@
           "fullName": "\"country_pkey\"",
           "columns": [
             "\"country_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"country\""
-                },
-                {
-                  "column": "\"country_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

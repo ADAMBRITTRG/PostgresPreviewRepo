@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"idx_fk_address_id\"",
+      "table": "\"public\".\"customer\"",
+      "type": "btree",
+      "columns": [
+        "\"address_id\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

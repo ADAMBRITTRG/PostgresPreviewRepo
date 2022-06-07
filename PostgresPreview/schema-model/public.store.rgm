@@ -31,20 +31,6 @@
           "fullName": "\"store_pkey\"",
           "columns": [
             "\"store_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"store\""
-                },
-                {
-                  "column": "\"store_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]

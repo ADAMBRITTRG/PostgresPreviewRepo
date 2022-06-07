@@ -1,0 +1,51 @@
+{
+  "objects": [
+    {
+      "objectType": "view",
+      "fullName": "\"public\".\"staff_list\"",
+      "text": "SELECT s.staff_id AS id,\n    ((s.first_name || ' '::text) || s.last_name) AS name,\n    a.address,\n    a.postal_code AS \"zip code\",\n    a.phone,\n    city.city,\n    country.country,\n    s.store_id AS sid\n   FROM (((public.staff s\n     JOIN public.address a ON ((s.address_id = a.address_id)))\n     JOIN public.city ON ((a.city_id = city.city_id)))\n     JOIN public.country ON ((city.country_id = country.country_id)));",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"id\"",
+          "type": "int4"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"name\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"address\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"zip code\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"phone\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"city\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"country\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"sid\"",
+          "type": "int4"
+        }
+      ]
+    }
+  ]
+}

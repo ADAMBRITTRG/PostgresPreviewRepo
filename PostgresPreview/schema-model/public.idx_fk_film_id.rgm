@@ -1,0 +1,14 @@
+{
+  "objects": [
+    {
+      "objectType": "index",
+      "fullName": "\"public\".\"idx_fk_film_id\"",
+      "table": "\"public\".\"film_actor\"",
+      "type": "btree",
+      "columns": [
+        "\"film_id\""
+      ],
+      "isUnique": "False"
+    }
+  ]
+}

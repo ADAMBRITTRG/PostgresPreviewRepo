@@ -27,32 +27,6 @@
           "columns": [
             "\"actor_id\"",
             "\"film_id\""
-          ],
-          "dependencies": [
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"film_actor\""
-                },
-                {
-                  "column": "\"actor_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            },
-            {
-              "dependencyType": "Requires",
-              "consumes": [
-                {
-                  "table": "\"public\".\"film_actor\""
-                },
-                {
-                  "column": "\"film_id\""
-                }
-              ],
-              "propertiesRequiringRebuild": []
-            }
           ]
         }
       ]
