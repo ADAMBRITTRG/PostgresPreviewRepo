@@ -1,0 +1,9 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"Test\".\"TestTableInTestSchema\"",
+      "columns": []
+    }
+  ]
+}

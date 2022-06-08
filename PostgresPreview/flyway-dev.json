@@ -10,12 +10,42 @@
     "scriptsFolder": "./schema-model"
   },
   "deployment": {
-      "flywayConfFiles": [
+    "flywayConfFiles": [
       "./flyway.conf"
     ],
-    "generateUndoScripts":true
+    "generateUndoScripts": true,
+    "targetDatabases": [
+      {
+        "connectionProvider": {
+          "url": "jdbc:postgresql://rbxtmzu7.instances.spawn.cc:32671/pagila",
+          "username": "spawn_admin_cBuT",
+          "password": {
+            "data": "3nUmehN3SKlYm8fA",
+            "secretType": "Inline"
+          },
+          "type": "UsernamePassword"
+        },
+        "schemas": [
+          "public"
+        ],
+        "displayName": "Production"
+      },
+      {
+        "connectionProvider": {
+          "url": "jdbc:postgresql://rbxtmzu7.instances.spawn.cc:31331/pagila",
+          "username": "spawn_admin_YOsj",
+          "password": {
+            "data": "6VQDMS3pJWuZ6L7x",
+            "secretType": "Inline"
+          },
+          "type": "UsernamePassword"
+        },
+        "schemas": [
+          "public"
+        ],
+        "displayName": "DevEnvironment2"
+      }
+    ]
   },
-  "capabilities": {
-    "comparisonEngineType": "RgCompare"
-  }
+  "capabilities": {}
 }
