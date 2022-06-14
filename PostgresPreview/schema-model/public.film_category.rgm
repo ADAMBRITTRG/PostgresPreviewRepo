@@ -7,17 +7,21 @@
         {
           "objectType": "column",
           "fullName": "\"film_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"category_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"last_update\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "null": "NOT NULL",
+          "default": "now()"
         }
       ],
       "primaryKeys": [

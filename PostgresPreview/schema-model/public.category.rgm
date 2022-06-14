@@ -7,17 +7,22 @@
         {
           "objectType": "column",
           "fullName": "\"category_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL",
+          "default": "nextval('public.category_category_id_seq'::regclass)"
         },
         {
           "objectType": "column",
           "fullName": "\"name\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"last_update\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "null": "NOT NULL",
+          "default": "now()"
         }
       ],
       "primaryKeys": [

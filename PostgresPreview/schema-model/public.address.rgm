@@ -7,12 +7,15 @@
         {
           "objectType": "column",
           "fullName": "\"address_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL",
+          "default": "nextval('public.address_address_id_seq'::regclass)"
         },
         {
           "objectType": "column",
           "fullName": "\"address\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
@@ -22,12 +25,14 @@
         {
           "objectType": "column",
           "fullName": "\"district\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"city_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
@@ -37,12 +42,15 @@
         {
           "objectType": "column",
           "fullName": "\"phone\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"last_update\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "null": "NOT NULL",
+          "default": "now()"
         }
       ],
       "primaryKeys": [

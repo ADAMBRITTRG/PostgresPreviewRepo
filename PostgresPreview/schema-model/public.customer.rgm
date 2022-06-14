@@ -7,22 +7,27 @@
         {
           "objectType": "column",
           "fullName": "\"customer_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL",
+          "default": "nextval('public.customer_customer_id_seq'::regclass)"
         },
         {
           "objectType": "column",
           "fullName": "\"store_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"first_name\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"last_name\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
@@ -32,22 +37,28 @@
         {
           "objectType": "column",
           "fullName": "\"address_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"activebool\"",
-          "type": "bool"
+          "type": "bool",
+          "null": "NOT NULL",
+          "default": "true"
         },
         {
           "objectType": "column",
           "fullName": "\"create_date\"",
-          "type": "date"
+          "type": "date",
+          "null": "NOT NULL",
+          "default": "CURRENT_DATE"
         },
         {
           "objectType": "column",
           "fullName": "\"last_update\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "default": "now()"
         },
         {
           "objectType": "column",

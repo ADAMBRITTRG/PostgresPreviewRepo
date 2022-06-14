@@ -7,12 +7,15 @@
         {
           "objectType": "column",
           "fullName": "\"film_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL",
+          "default": "nextval('public.film_film_id_seq'::regclass)"
         },
         {
           "objectType": "column",
           "fullName": "\"title\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
@@ -27,7 +30,8 @@
         {
           "objectType": "column",
           "fullName": "\"language_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
@@ -37,12 +41,16 @@
         {
           "objectType": "column",
           "fullName": "\"rental_duration\"",
-          "type": "int2"
+          "type": "int2",
+          "null": "NOT NULL",
+          "default": "3"
         },
         {
           "objectType": "column",
           "fullName": "\"rental_rate\"",
-          "type": "numeric"
+          "type": "numeric",
+          "null": "NOT NULL",
+          "default": "4.99"
         },
         {
           "objectType": "column",
@@ -52,17 +60,22 @@
         {
           "objectType": "column",
           "fullName": "\"replacement_cost\"",
-          "type": "numeric"
+          "type": "numeric",
+          "null": "NOT NULL",
+          "default": "19.99"
         },
         {
           "objectType": "column",
           "fullName": "\"rating\"",
-          "type": "\"public\".\"mpaa_rating\""
+          "type": "\"public\".\"mpaa_rating\"",
+          "default": "'G'::public.mpaa_rating"
         },
         {
           "objectType": "column",
           "fullName": "\"last_update\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "null": "NOT NULL",
+          "default": "now()"
         },
         {
           "objectType": "column",
@@ -72,7 +85,8 @@
         {
           "objectType": "column",
           "fullName": "\"fulltext\"",
-          "type": "tsvector"
+          "type": "tsvector",
+          "null": "NOT NULL"
         }
       ],
       "primaryKeys": [

@@ -7,22 +7,27 @@
         {
           "objectType": "column",
           "fullName": "\"staff_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL",
+          "default": "nextval('public.staff_staff_id_seq'::regclass)"
         },
         {
           "objectType": "column",
           "fullName": "\"first_name\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"last_name\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"address_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
@@ -32,17 +37,21 @@
         {
           "objectType": "column",
           "fullName": "\"store_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"active\"",
-          "type": "bool"
+          "type": "bool",
+          "null": "NOT NULL",
+          "default": "true"
         },
         {
           "objectType": "column",
           "fullName": "\"username\"",
-          "type": "text"
+          "type": "text",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
@@ -52,7 +61,9 @@
         {
           "objectType": "column",
           "fullName": "\"last_update\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "null": "NOT NULL",
+          "default": "now()"
         },
         {
           "objectType": "column",

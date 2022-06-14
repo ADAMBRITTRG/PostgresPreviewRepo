@@ -7,7 +7,9 @@
         {
           "objectType": "column",
           "fullName": "\"id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL",
+          "default": "nextval('public.subscriptions_id_seq'::regclass)"
         },
         {
           "objectType": "column",

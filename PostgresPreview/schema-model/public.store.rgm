@@ -7,22 +7,28 @@
         {
           "objectType": "column",
           "fullName": "\"store_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL",
+          "default": "nextval('public.store_store_id_seq'::regclass)"
         },
         {
           "objectType": "column",
           "fullName": "\"manager_staff_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"address_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"last_update\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "null": "NOT NULL",
+          "default": "now()"
         }
       ],
       "primaryKeys": [

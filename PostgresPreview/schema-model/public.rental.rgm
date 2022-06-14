@@ -7,22 +7,27 @@
         {
           "objectType": "column",
           "fullName": "\"rental_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL",
+          "default": "nextval('public.rental_rental_id_seq'::regclass)"
         },
         {
           "objectType": "column",
           "fullName": "\"rental_date\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"inventory_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"customer_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
@@ -32,12 +37,15 @@
         {
           "objectType": "column",
           "fullName": "\"staff_id\"",
-          "type": "int4"
+          "type": "int4",
+          "null": "NOT NULL"
         },
         {
           "objectType": "column",
           "fullName": "\"last_update\"",
-          "type": "timestamptz"
+          "type": "timestamptz",
+          "null": "NOT NULL",
+          "default": "now()"
         }
       ],
       "primaryKeys": [
