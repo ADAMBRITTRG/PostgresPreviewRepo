@@ -1,0 +1,20 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"MorePower\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"Test\"",
+          "type": "date"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"Description\"",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
