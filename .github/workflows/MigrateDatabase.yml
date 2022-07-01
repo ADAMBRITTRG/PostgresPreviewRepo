@@ -15,7 +15,7 @@ jobs:
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
-          flyway/flyway:7.12.1-alpine
+          flyway/flyway
           -url="jdbc:postgresql://${{ env.SUPABASE_HOST }}:${{ env.SUPABASE_PORT }}/${{ env.SUPABASE_DB }}?sslmode=require"
           -user="${{ env.SUPABASE_USER }}"
           -password="${{ secrets.SUPABASE_PASS }}"
