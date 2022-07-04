@@ -11,7 +11,7 @@ env:
   DB_TEMP_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30022/pagila
   DB_TEMP_USER: spawn_admin_cBuT
   FLYWAY_EDITION: enterprise
-  FLYWAY_LOCATIONS: /PostgresPreview/migrations/
+  FLYWAY_LOCATIONS: /migrations/
   FLYWAY_PROJECT_PATH: postgresql/pagila
   SQLFLUFF_DIALECT: postgres
 
