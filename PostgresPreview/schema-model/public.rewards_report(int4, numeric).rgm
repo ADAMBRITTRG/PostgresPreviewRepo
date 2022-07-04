@@ -17,7 +17,8 @@
           "mode": "IN"
         }
       ],
-      "language": "plpgsql"
+      "language": "plpgsql",
+      "basic_name": "rewards_report"
     }
   ]
 }

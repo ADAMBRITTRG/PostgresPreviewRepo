@@ -12,7 +12,8 @@
           "mode": "IN"
         }
       ],
-      "language": "plpgsql"
+      "language": "plpgsql",
+      "basic_name": "inventory_in_stock"
     }
   ]
 }

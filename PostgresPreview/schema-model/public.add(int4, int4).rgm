@@ -17,7 +17,8 @@
           "mode": "IN"
         }
       ],
-      "language": "sql"
+      "language": "sql",
+      "basic_name": "add"
     }
   ]
 }

@@ -44,6 +44,21 @@
           "public"
         ],
         "displayName": "DevEnvironment2"
+      },
+      {
+        "connectionProvider": {
+          "url": "jdbc:postgresql://rbxtmzu7.instances.spawn.cc:32671/pagila",
+          "username": "spawn_admin_cBuT",
+          "password": {
+            "data": "3nUmehN3SKlYm8fA",
+            "secretType": "Inline"
+          },
+          "type": "UsernamePassword"
+        },
+        "schemas": [
+          "public"
+        ],
+        "displayName": "Prod-TestLink"
       }
     ]
   },
