@@ -17,12 +17,52 @@ env:
 
 
 jobs:
+
+  build-database:
+    name: build database
+    runs-on: ubuntu-20.04
+    
+    steps:
+      - uses: actions/checkout@v2
+      - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
+          flyway/flyway
+          -url="${{ env.DB_TEMP_URL }}"
+          -user="${{ env.DB_TEMP_USER }}"
+          -password="${{ secrets.DB_TEMP_PASSWORD }}"
+          clean migrate
+      - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
+          flyway/flyway
+          -url="${{ env.DB_TEMP_URL }}"
+          -user="${{ env.DB_TEMP_USER }}"
+          -password="${{ secrets.DB_TEMP_PASSWORD }}"
+          info
+
   migrate-database:
     name: Run Flyway migrations
     runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
+      - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
+          flyway/flyway
+          -url="${{ env.DB_PROD_URL }}"
+          -user="${{ env.DB_PROD_USER }}"
+          -password="${{ secrets.DB_PROD_PASSWORD }}"
+          info
+      - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
+          flyway/flyway
+          -url="${{ env.DB_PROD_URL }}"
+          -user="${{ env.DB_PROD_USER }}"
+          -password="${{ secrets.DB_PROD_PASSWORD }}"
+          migrate
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
