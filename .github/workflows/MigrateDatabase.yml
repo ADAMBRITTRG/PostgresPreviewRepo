@@ -28,6 +28,6 @@ jobs:
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_PROD_URL }}"
-          -user="${{ env.DB_PROD_URL }}"
-          -password="${{ secrets.DB_PROD_USER }}"
+          -user="${{ env.DB_PROD_USER }}"
+          -password="${{ secrets.DB_PROD_PASSWORD }}"
           info
