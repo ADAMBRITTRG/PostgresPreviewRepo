@@ -4,6 +4,17 @@ on:
   push:
     branches:
       - main
+      
+env:
+  DB_PROD_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:32671/pagila
+  DB_PROD_USER: spawn_admin_cBuT
+  DB_TEMP_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30022/pagila
+  DB_TEMP_USER: spawn_admin_cBuT
+  FLYWAY_EDITION: enterprise
+  FLYWAY_LOCATIONS: $CI_PROJECT_DIR/PostgresPreview/migrations/
+  FLYWAY_PROJECT_PATH: postgresql/pagila
+  SQLFLUFF_DIALECT: postgres
+
 
 jobs:
   migrate-database:
@@ -16,7 +27,7 @@ jobs:
           docker run --rm
           --volume ${{ github.workspace }}/migrations:/flyway/sql:ro
           flyway/flyway
-          -url="jdbc:postgresql://${{ secrets.DB_PROD_URL }}?sslmode=require"
-          -user="${{ secrets.DB_PROD_URL }}"
+          -url="jdbc:postgresql://${{ env.DB_PROD_URL }}?sslmode=require"
+          -user="${{ env.DB_PROD_URL }}"
           -password="${{ secrets.DB_PROD_USER }}"
           migrate
