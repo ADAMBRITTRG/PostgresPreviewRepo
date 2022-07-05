@@ -6,6 +6,7 @@ CREATE TABLE public."MV9" (
     
 );
 
+
 DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.actors...';END$$;
 CREATE TABLE public.actors (
     name varchar,
