@@ -31,6 +31,14 @@ jobs:
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
           -password="${{ secrets.DB_TEMP_PASSWORD }}"
+          repair
+      - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
+          flyway/flyway
+          -url="${{ env.DB_TEMP_URL }}"
+          -user="${{ env.DB_TEMP_USER }}"
+          -password="${{ secrets.DB_TEMP_PASSWORD }}"
           clean migrate
       - run: >-
           docker run --rm
@@ -48,6 +56,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
+          flyway/flyway
+          -url="${{ env.DB_PROD_URL }}"
+          -user="${{ env.DB_PROD_USER }}"
+          -password="${{ secrets.DB_PROD_PASSWORD }}"
+          repair
+      - run: >-    
           docker run --rm
           --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
