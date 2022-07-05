@@ -18,6 +18,4 @@ AS $_$
 $_$;
 
 
-DO language plpgsql $$BEGIN RAISE NOTICE 'Creating schwabcolumn on "public"."customer"...';END$$;
-ALTER TABLE public.customer ADD COLUMN schwabcolumn varchar;
 SET check_function_bodies = true;

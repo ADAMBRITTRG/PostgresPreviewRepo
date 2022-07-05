@@ -9,6 +9,4 @@ DO language plpgsql $$BEGIN RAISE NOTICE 'Dropping "public"."schwabfunction(int4
 DROP FUNCTION public.schwabfunction(int4);
 
 
-DO language plpgsql $$BEGIN RAISE NOTICE 'Dropping "schwabcolumn" on "public"."customer"...';END$$;
-ALTER TABLE public.customer DROP COLUMN schwabcolumn;
 SET check_function_bodies = true;
