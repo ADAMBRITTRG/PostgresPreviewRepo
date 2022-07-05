@@ -1,10 +1,5 @@
 SET check_function_bodies = false;
 
-
-DO language plpgsql $$BEGIN RAISE NOTICE 'Creating astcolumn on "public"."customer"...';END$$;
-ALTER TABLE public.customer ADD COLUMN astcolumn varchar;
-
-
 DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.ASTTable...';END$$;
 CREATE TABLE public."ASTTable" (
     "Date" date
