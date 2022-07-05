@@ -6,11 +6,6 @@ CREATE TABLE public."MV9" (
     
 );
 
-
-DO language plpgsql $$BEGIN RAISE NOTICE 'Creating uniquereference on "public"."customer"...';END$$;
-ALTER TABLE public.customer ADD COLUMN uniquereference varchar;
-
-
 DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.actors...';END$$;
 CREATE TABLE public.actors (
     name varchar,
