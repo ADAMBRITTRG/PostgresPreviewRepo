@@ -9,6 +9,4 @@ DO language plpgsql $$BEGIN RAISE NOTICE 'Dropping "public"."additonalfunction(i
 DROP FUNCTION public.additonalfunction(int4);
 
 
-DO language plpgsql $$BEGIN RAISE NOTICE 'Dropping "description" on "public"."customer"...';END$$;
-ALTER TABLE public.customer DROP COLUMN description;
 SET check_function_bodies = true;

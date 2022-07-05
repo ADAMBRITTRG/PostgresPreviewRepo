@@ -8,10 +8,6 @@ CREATE TABLE public.sales (
 );
 
 
-DO language plpgsql $$BEGIN RAISE NOTICE 'Creating description on "public"."customer"...';END$$;
-ALTER TABLE public.customer ADD COLUMN description varchar;
-
-
 DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.additonalfunction(int4)...';END$$;
 CREATE FUNCTION public.additonalfunction(IN i int4)
 RETURNS int4
