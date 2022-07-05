@@ -1,13 +1,6 @@
 SET check_function_bodies = false;
 
 
-DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.amwintable...';END$$;
-CREATE TABLE public.amwintable (
-    title varchar,
-    year date
-);
-
-
 DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.georgiapacifictable...';END$$;
 CREATE TABLE public.georgiapacifictable (
     title varchar,
