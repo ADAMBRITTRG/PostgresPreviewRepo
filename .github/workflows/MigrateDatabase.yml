@@ -62,7 +62,7 @@ jobs:
           -url="${{ env.DB_PROD_URL }}"
           -user="${{ env.DB_PROD_USER }}"
           -password="${{ secrets.DB_PROD_PASSWORD }}"
-          repair
+          clean migrate
       - run: >-    
           docker run --rm
           --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
