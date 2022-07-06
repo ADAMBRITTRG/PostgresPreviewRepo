@@ -24,14 +24,14 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-      #- run: >-
-      #    docker run --rm
-      #    --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
-      #    flyway/flyway
-      #    -url="${{ env.DB_TEMP_URL }}"
-      #    -user="${{ env.DB_TEMP_USER }}"
-      #    -password="${{ secrets.DB_TEMP_PASSWORD }}"
-      #    repair
+      - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
+          flyway/flyway
+          -url="${{ env.DB_TEMP_URL }}"
+          -user="${{ env.DB_TEMP_USER }}"
+          -password="${{ secrets.DB_TEMP_PASSWORD }}"
+          repair
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
@@ -57,7 +57,7 @@ jobs:
       - uses: actions/checkout@v2
       #- run: >-
       #    docker run --rm
-      #    --volume ${{ env.FLYWAY_LOCATIONS }}:/flyway/sql:ro
+      #    --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
       #    flyway/flyway
       #    -url="${{ env.DB_PROD_URL }}"
       #    -user="${{ env.DB_PROD_USER }}"
@@ -65,7 +65,7 @@ jobs:
       #    repair
       - run: >-    
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_PROD_URL }}"
           -user="${{ env.DB_PROD_USER }}"
@@ -73,7 +73,7 @@ jobs:
           info
       - run: >-
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_PROD_URL }}"
           -user="${{ env.DB_PROD_USER }}"
@@ -81,7 +81,7 @@ jobs:
           migrate
       - run: >-
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_PROD_URL }}"
           -user="${{ env.DB_PROD_USER }}"
