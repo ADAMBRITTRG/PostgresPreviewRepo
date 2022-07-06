@@ -5,18 +5,17 @@ on:
     branches:
       - main
       
+      
 env:
-  DB_PROD_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:32671/pagila
-  DB_PROD_USER: spawn_admin_cBuT
-  DB_TEMP_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30022/pagila
-  DB_TEMP_USER: spawn_admin_cBuT
-  FLYWAY_EDITION: enterprise
-  FLYWAY_LOCATIONS: ${{ github.GITHUB_REPOSITORY }}/PostgresPreview/migrations
-  FLYWAY_LOCATIONS2: ${{ github.workspace }}/PostgresPreview/migrations
-  FLYWAY_PROJECT_PATH: postgresql/pagila
-  SQLFLUFF_DIALECT: postgres
-
-
+    DB_PROD_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:32671/pagila
+    DB_PROD_USER: spawn_admin_cBuT
+    DB_TEMP_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30022/pagila
+    DB_TEMP_USER: spawn_admin_cBuT
+    FLYWAY_EDITION: enterprise
+    FLYWAY_LOCATIONS: ${{ github.workspace }}/PostgresPreview/migrations
+    FLYWAY_PROJECT_PATH: postgresql/pagila
+    SQLFLUFF_DIALECT: postgres
+      
 jobs:
 
   build-database:
@@ -25,17 +24,17 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
-      #- run: >-
-      #    docker run --rm
-      #    --volume ${{ env.FLYWAY_LOCATIONS2 }}:/flyway/sql:ro
-      #    flyway/flyway
-      #    -url="${{ env.DB_TEMP_URL }}"
-      #    -user="${{ env.DB_TEMP_USER }}"
-      #    -password="${{ secrets.DB_TEMP_PASSWORD }}"
-      #    repair
       - run: >-
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS2 }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
+          flyway/flyway
+          -url="${{ env.DB_TEMP_URL }}"
+          -user="${{ env.DB_TEMP_USER }}"
+          -password="${{ secrets.DB_TEMP_PASSWORD }}"
+          repair
+      - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
@@ -43,7 +42,7 @@ jobs:
           clean migrate
       - run: >-
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS2 }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
@@ -58,7 +57,7 @@ jobs:
       - uses: actions/checkout@v2
       #- run: >-
       #    docker run --rm
-      #    --volume ${{ env.FLYWAY_LOCATIONS2 }}:/flyway/sql:ro
+      #    --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
       #    flyway/flyway
       #    -url="${{ env.DB_PROD_URL }}"
       #    -user="${{ env.DB_PROD_USER }}"
@@ -66,7 +65,7 @@ jobs:
       #    repair
       - run: >-    
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS2 }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_PROD_URL }}"
           -user="${{ env.DB_PROD_USER }}"
@@ -74,7 +73,7 @@ jobs:
           info
       - run: >-
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS2 }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_PROD_URL }}"
           -user="${{ env.DB_PROD_USER }}"
@@ -82,7 +81,7 @@ jobs:
           migrate
       - run: >-
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS2 }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_PROD_URL }}"
           -user="${{ env.DB_PROD_USER }}"
