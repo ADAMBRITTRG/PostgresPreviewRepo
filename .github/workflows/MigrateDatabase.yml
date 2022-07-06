@@ -5,28 +5,25 @@ on:
     branches:
       - main
       
-env:
-  DB_PROD_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:32671/pagila
-  DB_PROD_USER: spawn_admin_cBuT
-  DB_TEMP_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30022/pagila
-  DB_TEMP_USER: spawn_admin_cBuT
-  FLYWAY_EDITION: enterprise
-  FLYWAY_LOCATIONS: ${{ github.workspace }}/PostgresPreview/migrations
-  FLYWAY_PROJECT_PATH: postgresql/pagila
-  SQLFLUFF_DIALECT: postgres
-
-
 jobs:
 
   build-database:
     name: build database
     runs-on: ubuntu-20.04
-    
+    env:
+      DB_PROD_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:32671/pagila
+      DB_PROD_USER: spawn_admin_cBuT
+      DB_TEMP_URL: jdbc:postgresql://rbxtmzu7.instances.spawn.cc:30022/pagila
+      DB_TEMP_USER: spawn_admin_cBuT
+      FLYWAY_EDITION: enterprise
+      FLYWAY_LOCATIONS: ${{ github.workspace }}/PostgresPreview/migrations
+      FLYWAY_PROJECT_PATH: postgresql/pagila
+      SQLFLUFF_DIALECT: postgres
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       #- run: >-
       #    docker run --rm
-      #    --volume ${{ env.FLYWAY_LOCATIONS }}:/flyway/sql:ro
+      #    --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
       #    flyway/flyway
       #    -url="${{ env.DB_TEMP_URL }}"
       #    -user="${{ env.DB_TEMP_USER }}"
@@ -34,7 +31,7 @@ jobs:
       #    repair
       - run: >-
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
@@ -42,7 +39,7 @@ jobs:
           clean migrate
       - run: >-
           docker run --rm
-          --volume ${{ env.FLYWAY_LOCATIONS }}:/flyway/sql:ro
+          --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
           flyway/flyway
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
