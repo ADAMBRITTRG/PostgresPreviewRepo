@@ -12,8 +12,7 @@
           "mode": "IN"
         }
       ],
-      "language": "plpgsql",
-      "basic_name": "inventory_held_by_customer"
+      "language": "plpgsql"
     }
   ]
 }

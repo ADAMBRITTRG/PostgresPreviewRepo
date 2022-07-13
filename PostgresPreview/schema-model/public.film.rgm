@@ -25,7 +25,7 @@
         {
           "objectType": "column",
           "fullName": "\"release_year\"",
-          "type": "\"public\".\"year\""
+          "type": "public.year"
         },
         {
           "objectType": "column",
@@ -67,7 +67,7 @@
         {
           "objectType": "column",
           "fullName": "\"rating\"",
-          "type": "\"public\".\"mpaa_rating\"",
+          "type": "public.mpaa_rating",
           "default": "'G'::public.mpaa_rating"
         },
         {

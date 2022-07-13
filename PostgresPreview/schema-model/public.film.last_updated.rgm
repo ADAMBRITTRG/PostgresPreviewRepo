@@ -1,0 +1,16 @@
+{
+  "objects": [
+    {
+      "objectType": "trigger",
+      "fullName": "\"public\".\"film\".\"last_updated\"",
+      "timing": "BEFORE",
+      "events": [
+        "UPDATE"
+      ],
+      "level": "ROW",
+      "function": "public.last_updated",
+      "functionArguments": [],
+      "constraint": "False"
+    }
+  ]
+}

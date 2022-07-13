@@ -17,8 +17,7 @@
           "mode": "IN"
         }
       ],
-      "language": "sql",
-      "basic_name": "_group_concat"
+      "language": "sql"
     }
   ]
 }

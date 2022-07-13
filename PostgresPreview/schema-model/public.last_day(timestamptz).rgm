@@ -12,8 +12,7 @@
           "mode": "IN"
         }
       ],
-      "language": "sql",
-      "basic_name": "last_day"
+      "language": "sql"
     }
   ]
 }

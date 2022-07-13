@@ -38,7 +38,7 @@
         {
           "objectType": "column",
           "fullName": "\"rating\"",
-          "type": "\"public\".\"mpaa_rating\""
+          "type": "public.mpaa_rating"
         },
         {
           "objectType": "column",

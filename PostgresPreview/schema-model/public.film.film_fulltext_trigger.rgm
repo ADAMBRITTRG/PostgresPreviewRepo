@@ -1,0 +1,22 @@
+{
+  "objects": [
+    {
+      "objectType": "trigger",
+      "fullName": "\"public\".\"film\".\"film_fulltext_trigger\"",
+      "timing": "BEFORE",
+      "events": [
+        "UPDATE",
+        "INSERT"
+      ],
+      "level": "ROW",
+      "function": "tsvector_update_trigger",
+      "functionArguments": [
+        "fulltext",
+        "pg_catalog.english",
+        "title",
+        "description"
+      ],
+      "constraint": "False"
+    }
+  ]
+}

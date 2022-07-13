@@ -22,8 +22,7 @@
           "mode": "OUT"
         }
       ],
-      "language": "sql",
-      "basic_name": "film_not_in_stock"
+      "language": "sql"
     }
   ]
 }
