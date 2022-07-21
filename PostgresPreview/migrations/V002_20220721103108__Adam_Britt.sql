@@ -2,8 +2,7 @@ SET check_function_bodies = false;
 
 
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public._group_concat(text, text)...';END$$;
-DROP FUNCTION public._group_concat(text, text);
-CREATE FUNCTION public._group_concat(IN  text, IN  text)
+CREATE OR REPLACE FUNCTION public._group_concat(IN  text, IN  text)
 RETURNS text
 LANGUAGE sql
 AS $_$
@@ -16,8 +15,7 @@ $_$;
 
 
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public.rewards_report(int4, numeric)...';END$$;
-DROP FUNCTION public.rewards_report(int4, numeric);
-CREATE FUNCTION public.rewards_report(IN min_monthly_purchases int4, IN min_dollar_amount_purchased numeric)
+CREATE OR REPLACE FUNCTION public.rewards_report(IN min_monthly_purchases int4, IN min_dollar_amount_purchased numeric)
 RETURNS public.customer
 LANGUAGE plpgsql
 AS $_$
@@ -77,8 +75,7 @@ $_$;
 
 
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public.last_updated()...';END$$;
-DROP FUNCTION public.last_updated();
-CREATE FUNCTION public.last_updated()
+CREATE OR REPLACE FUNCTION public.last_updated()
 RETURNS trigger
 LANGUAGE plpgsql
 AS $_$
@@ -88,9 +85,32 @@ BEGIN
 END $_$;
 
 
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.store.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.store
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.staff.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.staff
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.rental.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.rental
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public.last_day(timestamptz)...';END$$;
-DROP FUNCTION public.last_day(timestamptz);
-CREATE FUNCTION public.last_day(IN  timestamptz)
+CREATE OR REPLACE FUNCTION public.last_day(IN  timestamptz)
 RETURNS date
 LANGUAGE sql
 AS $_$
@@ -103,9 +123,16 @@ AS $_$
 $_$;
 
 
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.language.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.language
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public.inventory_in_stock(int4)...';END$$;
-DROP FUNCTION public.inventory_in_stock(int4);
-CREATE FUNCTION public.inventory_in_stock(IN p_inventory_id int4)
+CREATE OR REPLACE FUNCTION public.inventory_in_stock(IN p_inventory_id int4)
 RETURNS bool
 LANGUAGE plpgsql
 AS $_$
@@ -138,8 +165,7 @@ END $_$;
 
 
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public.inventory_held_by_customer(int4)...';END$$;
-DROP FUNCTION public.inventory_held_by_customer(int4);
-CREATE FUNCTION public.inventory_held_by_customer(IN p_inventory_id int4)
+CREATE OR REPLACE FUNCTION public.inventory_held_by_customer(IN p_inventory_id int4)
 RETURNS int4
 LANGUAGE plpgsql
 AS $_$
@@ -156,9 +182,16 @@ BEGIN
 END $_$;
 
 
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.inventory.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.inventory
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public.get_customer_balance(int4, timestamptz)...';END$$;
-DROP FUNCTION public.get_customer_balance(int4, timestamptz);
-CREATE FUNCTION public.get_customer_balance(IN p_customer_id int4, IN p_effective_date timestamptz)
+CREATE OR REPLACE FUNCTION public.get_customer_balance(IN p_customer_id int4, IN p_effective_date timestamptz)
 RETURNS numeric
 LANGUAGE plpgsql
 AS $_$
@@ -199,8 +232,7 @@ $_$;
 
 
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public.film_not_in_stock(int4, int4)...';END$$;
-DROP FUNCTION public.film_not_in_stock(int4, int4);
-CREATE FUNCTION public.film_not_in_stock(IN p_film_id int4, IN p_store_id int4, OUT p_film_count int4)
+CREATE OR REPLACE FUNCTION public.film_not_in_stock(IN p_film_id int4, IN p_store_id int4, OUT p_film_count int4)
 RETURNS int4
 LANGUAGE sql
 AS $_$
@@ -213,8 +245,7 @@ $_$;
 
 
 DO language plpgsql $$BEGIN RAISE NOTICE 'Altering public.film_in_stock(int4, int4)...';END$$;
-DROP FUNCTION public.film_in_stock(int4, int4);
-CREATE FUNCTION public.film_in_stock(IN p_film_id int4, IN p_store_id int4, OUT p_film_count int4)
+CREATE OR REPLACE FUNCTION public.film_in_stock(IN p_film_id int4, IN p_store_id int4, OUT p_film_count int4)
 RETURNS int4
 LANGUAGE sql
 AS $_$
@@ -226,8 +257,88 @@ AS $_$
 $_$;
 
 
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.film_category.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.film_category
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.film_actor.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.film_actor
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.film.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.film
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.film.film_fulltext_trigger...';END$$;
+CREATE TRIGGER film_fulltext_trigger
+BEFORE UPDATE OR INSERT
+ON public.film
+FOR EACH ROW
+EXECUTE PROCEDURE tsvector_update_trigger('fulltext', 'pg_catalog.english', 'title', 'description');
+
+
 DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.Dev16...';END$$;
 CREATE TABLE public."Dev16" (
     
 );
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.customer.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.customer
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.country.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.country
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.city.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.city
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.category.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.category
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.address.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.address
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
+
+
+DO language plpgsql $$BEGIN RAISE NOTICE 'Creating public.actor.last_updated...';END$$;
+CREATE TRIGGER last_updated
+BEFORE UPDATE
+ON public.actor
+FOR EACH ROW
+EXECUTE PROCEDURE public.last_updated();
 SET check_function_bodies = true;
