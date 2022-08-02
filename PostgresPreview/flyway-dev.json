@@ -13,7 +13,7 @@
     "flywayConfFiles": [
       "./flyway.conf"
     ],
-    "generateUndoScripts": true,
+    "generateUndoScripts": false,
     "targetDatabases": [
       {
         "connectionProvider": {

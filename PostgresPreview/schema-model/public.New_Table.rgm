@@ -1,0 +1,25 @@
+{
+  "objects": [
+    {
+      "objectType": "table",
+      "fullName": "\"public\".\"New_Table\"",
+      "columns": [
+        {
+          "objectType": "column",
+          "fullName": "\"Date Column\"",
+          "type": "date"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"Description\"",
+          "type": "text"
+        },
+        {
+          "objectType": "column",
+          "fullName": "\"New Column\"",
+          "type": "bit"
+        }
+      ]
+    }
+  ]
+}
