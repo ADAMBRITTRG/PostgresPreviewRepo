@@ -37,7 +37,8 @@ stages:
       displayName: Run all migrations on a clean database
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway clean migrate 
---          -outOfOrder=true -schemas=public
+#          -outOfOrder=true 
+          -schemas=public
           -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) 
           -url='$(DB_TEMP_URL)'
           -edition=teams
