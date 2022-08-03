@@ -40,7 +40,6 @@ stages:
           -schemas=public
           -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) 
           -url='$(DB_TEMP_URL)'
-          -edition=teams
           -licenseKey=$(FLYWAY_LICENSE_KEY)
           > $(Build.ArtifactStagingDirectory)/Build_results.txt"
     - task: CmdLine@2
