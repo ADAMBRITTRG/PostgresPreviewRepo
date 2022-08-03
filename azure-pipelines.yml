@@ -42,7 +42,6 @@ stages:
           -url='$(DB_TEMP_URL)'
           -edition=teams
           -licenseKey=$(FLYWAY_LICENSE_KEY)
-          -errorOverrides=S0001:0:I-
           > $(Build.ArtifactStagingDirectory)/Build_results.txt"
     - task: CmdLine@2
       displayName: Flyway info (post build)
