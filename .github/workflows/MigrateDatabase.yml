@@ -40,7 +40,7 @@ jobs:
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
           -password="${{ secrets.DB_TEMP_PASSWORD }}"
-          -licensekey="${{ secrets.FLYWAY_LICENSE_KEY }}"
+          -flyway_licensekey="${{ secrets.FLYWAY_LICENSE_KEY }}"
           clean migrate
       - run: >-
           docker run --rm
