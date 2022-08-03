@@ -27,7 +27,7 @@ jobs:
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
-          flyway/flyway
+          redgate/flyway
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
           -password="${{ secrets.DB_TEMP_PASSWORD }}"
@@ -35,7 +35,7 @@ jobs:
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
-          flyway/flyway
+          redgate/flyway
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
           -password="${{ secrets.DB_TEMP_PASSWORD }}"
@@ -43,7 +43,7 @@ jobs:
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
-          flyway/flyway
+          redgate/flyway
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
           -password="${{ secrets.DB_TEMP_PASSWORD }}"
