@@ -41,7 +41,7 @@ jobs:
           -url="${{ env.DB_TEMP_URL }}"
           -user="${{ env.DB_TEMP_USER }}"
           -password="${{ secrets.DB_TEMP_PASSWORD }}"
-          clean migrate
+          -cleanDisabled=false clean migrate
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/PostgresPreview/migrations:/flyway/sql:ro
