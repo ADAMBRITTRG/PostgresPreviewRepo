@@ -48,7 +48,7 @@ stages:
       displayName: Flyway info (post build)
       inputs:
         script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info 
-          -outOfOrder=true -schemas=public
+          -schemas=public
           -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) 
           -url='$(DB_TEMP_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)"
