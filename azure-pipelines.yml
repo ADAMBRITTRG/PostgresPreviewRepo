@@ -126,7 +126,7 @@ stages:
       displayName: 'Changes.sql (dry run script)'
       inputs:
         script: |
-          container=$(docker create -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway migrate -dryRunOutput=/flyway/reports/changes.sql -outOfOrder=true -schemas=dbo -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) -url='$(DB_TEMP_URL)' -licenseKey=$(FLYWAY_LICENSE_KEY) -errorOverrides=S0001:0:I-)
+          container=$(docker create -v $(FLYWAY_LOCATIONS):/flyway/sql redgate/flyway migrate -dryRunOutput=/flyway/reports/changes.sql -outOfOrder=true -schemas=dbo -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) -url='$(DB_TEMP_URL)' -licenseKey=$(FLYWAY_LICENSE_KEY) -errorOverrides=S0001:0:I-)
           docker start -a ${container}
           docker cp ${container}:/flyway/reports/changes.sql $(Build.ArtifactStagingDirectory)
     - task: CmdLine@2
