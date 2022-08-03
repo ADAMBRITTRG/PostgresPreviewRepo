@@ -46,7 +46,7 @@ stages:
     - task: CmdLine@2
       displayName: Flyway info (post build)
       inputs:
-        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info 
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql redgate/flyway info 
           -schemas=public
           -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) 
           -url='$(DB_TEMP_URL)'
@@ -107,7 +107,7 @@ stages:
       displayName: Flyway info (pre-rehearsal)
       inputs:
 #change to acceptance once that is setup in clone
-        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql flyway/flyway info -X 
+        script: "docker run --rm -v $(FLYWAY_LOCATIONS):/flyway/sql redgate/flyway info -X 
           -user=$(DB_TEMP_USER) -password=$(DB_TEMP_PASSWORD) 
           -url='$(DB_TEMP_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)"
@@ -189,7 +189,7 @@ stages:
     - task: CmdLine@2
       displayName: Flyway info (pre-deployment)
       inputs:
-        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway info 
+        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql redgate/flyway info 
           -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
           -url='$(PROD_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)"
@@ -197,7 +197,7 @@ stages:
       enabled: true
       displayName: Flyway migrate
       inputs:
-        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway migrate 
+        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql redgate/flyway migrate 
           -outOfOrder=true 
           -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
           -url='$(PROD_URL)'
@@ -206,7 +206,7 @@ stages:
     - task: CmdLine@2
       displayName: Flyway info (post-deployment)
       inputs:
-        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql flyway/flyway info 
+        script: "docker run --rm -v $(Pipeline.Workspace)/Migrations:/flyway/sql redgate/flyway info 
           -user=$(PROD_USER) -password=$(PROD_PASSWORD) 
           -url='$(PROD_URL)'
           -licenseKey=$(FLYWAY_LICENSE_KEY)"
